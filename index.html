@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Embodied Capacity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F5F2;
+    --ink:#111111;
+    --gold:#E8B23A;
+    --ink-soft:rgba(17,17,17,0.62);
+    --dark:#0E0E0D;
+    --cream:#F5F2EA;
+    --cream-soft:rgba(245,242,234,0.68);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--dark);
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+  }
+  .hero-pattern{
+    position:absolute;
+    inset:0;
+    opacity:0.22;
+    pointer-events:none;
+  }
+  .hero-logo{
+    position:absolute;
+    top:5vh;
+    left:7vw;
+    z-index:2;
+    font-family:'Lora',serif;
+    line-height:1.05;
+    color:var(--cream);
+  }
+  .hero-logo .l1{
+    display:block;
+    font-weight:700;
+    font-style:normal;
+    font-size:20px;
+  }
+  .hero-logo .l2{
+    display:block;
+    font-weight:400;
+    font-style:italic;
+    font-size:20px;
+  }
+  .scroll-indicator{
+    position:absolute;
+    bottom:6vh;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+  }
+  .scroll-indicator .circle{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:1px solid rgba(245,242,234,0.35);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    animation:bounce 2s ease-in-out infinite;
+  }
+  .scroll-indicator svg{width:14px;height:14px;}
+  .scroll-indicator span{
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--cream-soft);
+  }
+  @keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(6px);}
+  }
+  .hero-inner{
+    position:relative;
+    z-index:1;
+    max-width:900px;
+    padding:30vh 7vw 14vh;
+  }
+  .hero h1{
+    font-family:'Lora',serif;
+    font-style:normal;
+    font-weight:400;
+    line-height:1.1;
+    margin:24px 0 0;
+    font-size:clamp(32px,5.2vw,68px);
+  }
+  .hero h1 .strong-line{
+    display:block;
+    color:var(--cream);
+  }
+  .hero h1 .soft-line{
+    display:block;
+    color:var(--gold);
+    margin-top:4px;
+  }
+  .hero .divider{
+    width:64px;
+    height:2px;
+    background:var(--gold);
+    margin:52px 0 44px;
+  }
+  .hero p{
+    font-size:19px;
+    font-weight:300;
+    line-height:1.75;
+    color:rgba(255,255,255,0.85);
+    max-width:720px;
+    margin:0 0 20px;
+  }
+  .hero-cta{
+    margin-top:28px;
+    display:flex;
+    align-items:center;
+    gap:32px;
+    flex-wrap:wrap;
+  }
+  .cta-solid{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 30px;
+    background:var(--gold);
+    color:var(--dark);
+    font-weight:700;
+    font-size:15px;
+    text-decoration:none;
+    border-radius:4px;
+  }
+  /* ---------- KİMLERLE ÇALIŞIYORUZ ---------- */
+  .split{
+    display:grid;
+    grid-template-columns:40% 60%;
+    min-height:280vh;
+  }
+  .left-col{
+    position:sticky;
+    top:0;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    text-align:center;
+    padding:16vh 6vw 0;
+    border-right:1px solid rgba(0,0,0,0.08);
+    background:var(--bg);
+  }
+  .left-col .dash{width:36px;height:1px;background:var(--gold);margin-bottom:18px;}
+  .left-col .label{
+    font-family:'Lora',serif;
+    font-weight:500;
+    font-size:clamp(28px,3.2vw,40px);
+    line-height:1.15;
+    color:var(--gold);
+    max-width:320px;
+    margin-bottom:40px;
+  }
+  .left-col .subline{
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(22px,2.4vw,28px);
+    line-height:1.4;
+    color:var(--ink-soft);
+    max-width:400px;
+    margin:0;
+  }
+
+  .right-col{
+    position:relative;
+    background:var(--dark);
+  }
+  .right-inner{
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow:hidden;
+    background:var(--dark);
+  }
+  .pattern{
+    position:absolute;
+    inset:0;
+    opacity:0.24;
+    pointer-events:none;
+  }
+  .panel{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    padding:0 10vw;
+    background:var(--dark);
+    will-change:transform;
+  }
+  .panel .panel-content{
+    max-width:600px;
+    width:100%;
+    position:relative;
+    z-index:1;
+  }
+  .panel .p-label{
+    font-family:'Lora',serif;
+    font-weight:500;
+    font-size:clamp(28px,3.2vw,40px);
+    line-height:1.15;
+    color:var(--cream);
+    margin-bottom:16px;
+  }
+  .panel h2{
+    font-family:'Lora',serif;
+    font-weight:500;
+    font-size:clamp(24px,2.6vw,32px);
+    line-height:1.15;
+    letter-spacing:-0.005em;
+    margin:0 0 24px;
+    color:var(--gold);
+  }
+  .panel p{
+    font-size:18px;
+    font-weight:400;
+    line-height:1.55;
+    color:#FFFFFF;
+    margin:0 0 16px;
+  }
+  .panel .cta{
+    margin-top:18px;
+    display:inline-block;
+    padding:14px 32px;
+    border:none;
+    border-radius:4px;
+    color:var(--dark);
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:0.01em;
+    text-decoration:none;
+    background:var(--gold);
+  }
+
+  /* ---------- YAKLAŞIMIMIZ ---------- */
+  .approach{
+    background:var(--bg);
+    padding:12vh 7vw;
+    color:var(--ink);
+    overflow:hidden;
+  }
+  .approach-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6vw;
+    margin-bottom:14vh;
+  }
+  .approach-left .eyebrow{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:16px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:28px;
+  }
+  .approach-left .eyebrow .dash{width:28px;height:2px;background:var(--gold);}
+  .approach-headline{
+    font-family:'Lora',serif;
+    font-style:normal;
+    font-weight:600;
+    font-size:clamp(30px,3.6vw,46px);
+    line-height:1.3;
+    margin:0;
+    color:var(--ink);
+  }
+  .approach-right{display:flex;align-items:center;height:100%;}
+  .approach-right p{
+    font-size:18px;
+    line-height:1.85;
+    color:var(--ink-soft);
+    font-weight:400;
+    margin:0;
+  }
+  .approach-quote-block{
+    border-left:3px solid var(--gold);
+    padding-left:44px;
+    max-width:900px;
+    opacity:0;
+    transform:translateY(36px);
+    transition:opacity 0.9s ease, transform 0.9s ease;
+  }
+  .approach-quote-block.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .approach-quote-block .quote{
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(22px,2.4vw,30px);
+    line-height:1.6;
+    color:var(--ink);
+    margin:0 0 28px;
+  }
+  .approach-quote-block .quote-sub{
+    font-size:18px;
+    line-height:1.85;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
+  /* ---------- GERÇEK HAYATTAN (vaka) ---------- */
+  .case{
+    background:var(--bg);
+    padding:12vh 7vw;
+    position:relative;
+  }
+  .case-eyebrow{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:16px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:48px;
+  }
+  .case-eyebrow .dash{width:28px;height:2px;background:var(--gold);}
+  .case-quote-top{
+    max-width:900px;
+    margin-bottom:64px;
+  }
+  .case-quote-top .quote-text{
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(24px,2.8vw,34px);
+    line-height:1.4;
+    color:var(--ink);
+    margin:0 0 32px;
+  }
+  .case-quote-top .attribution{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    font-size:15px;
+    color:var(--ink-soft);
+  }
+  .case-quote-top .attribution .dash{width:32px;height:1px;background:var(--gold);}
+  .case-narrative{
+    max-width:800px;
+  }
+  .case-narrative p{
+    font-size:17px;
+    line-height:1.85;
+    color:var(--ink-soft);
+    margin:0 0 24px;
+  }
+  .case-callout{
+    border-left:3px solid var(--gold);
+    padding-left:28px;
+    margin-top:36px;
+  }
+  .case-callout p{
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:19px;
+    line-height:1.7;
+    color:var(--ink);
+    margin:0;
+  }
+
+  /* ---------- FİNAL CTA ---------- */
+  .final{
+    background:var(--dark);
+    padding:14vh 7vw 6vh;
+    position:relative;
+    overflow:hidden;
+  }
+  .final-watermark{
+    position:absolute;
+    right:4vw;
+    bottom:6vh;
+    font-family:'Lora',serif;
+    font-weight:700;
+    font-size:min(30vw,420px);
+    line-height:1;
+    color:rgba(245,242,234,0.04);
+    pointer-events:none;
+    user-select:none;
+  }
+  .final-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:6vw;
+    position:relative;
+    z-index:1;
+  }
+  .final-eyebrow{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:14px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:28px;
+  }
+  .final-eyebrow .dash{width:28px;height:1px;background:var(--gold);}
+  .final h2{
+    font-family:'Lora',serif;
+    font-style:normal;
+    font-weight:600;
+    font-size:clamp(20px,2.2vw,26px);
+    line-height:1.3;
+    margin:0;
+  }
+  .final h2 .l1{display:block;color:var(--cream);}
+  .final h2 .l2{display:block;color:var(--cream);margin-top:2px;}
+  .final .sub{
+    font-family:'Lora',serif;
+    font-style:normal;
+    font-weight:500;
+    font-size:clamp(28px,3.2vw,40px);
+    line-height:1.35;
+    color:var(--gold);
+    max-width:620px;
+    margin:20px 0 40px;
+  }
+  .final-ctas{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .final-cta-solid{
+    padding:16px 30px;
+    background:var(--gold);
+    color:var(--dark);
+    font-weight:700;
+    font-size:15px;
+    text-decoration:none;
+    border-radius:4px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .final-cta-outline{
+    padding:16px 30px;
+    background:transparent;
+    border:1px solid rgba(245,242,234,0.3);
+    color:var(--cream);
+    font-weight:500;
+    font-size:15px;
+    text-decoration:none;
+    border-radius:4px;
+  }
+  .scope-card{
+    border:1px solid rgba(245,242,234,0.14);
+    border-radius:6px;
+    padding:36px;
+    align-self:start;
+  }
+  .scope-card .scope-title{
+    font-size:13px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:26px;
+  }
+  .scope-item{
+    padding:20px 0;
+    border-top:1px solid rgba(245,242,234,0.12);
+  }
+  .scope-item:first-of-type{border-top:none;padding-top:0;}
+  .scope-item .dot{color:var(--gold);margin-right:8px;}
+  .scope-item .t{
+    font-size:17px;
+    font-weight:700;
+    color:var(--cream);
+    margin:0 0 6px;
+  }
+  .scope-item .d{
+    font-size:15px;
+    color:var(--cream-soft);
+    margin:0;
+    padding-left:18px;
+  }
+  .final-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:16vh;
+    padding-top:32px;
+    border-top:1px solid rgba(245,242,234,0.1);
+    position:relative;
+    z-index:1;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .final-footer .brand{
+    font-family:'Lora',serif;
+    font-weight:700;
+    font-size:16px;
+    color:rgba(245,242,234,0.55);
+  }
+  .final-footer .tags{
+    font-size:14px;
+    color:rgba(245,242,234,0.4);
+  }
+
+  /* ---------- BİZ KİMİZ ---------- */
+  .who{
+    position:relative;
+    background:var(--dark);
+    padding:14vh 7vw;
+    overflow:hidden;
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+  }
+  .who-photo-bg{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background-image:url('duygu-photo.webp');
+    background-size:cover;
+    background-position:center 30%;
+    filter:blur(14px);
+    transform:scale(1.1);
+  }
+  .who-bg{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(to right, rgba(14,14,13,0.92) 0%, rgba(14,14,13,0.78) 42%, rgba(14,14,13,0.5) 100%);
+  }
+  .who-inner{
+    position:relative;
+    z-index:1;
+    width:100%;
+  }
+  .who-right{
+    opacity:0;
+    transform:translateX(70px);
+    transition:opacity 1.8s ease 0.5s, transform 1.8s ease 0.5s;
+  }
+  .who-right.is-visible{
+    opacity:1;
+    transform:translateX(0);
+  }
+  .who-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6vw;
+    align-items:start;
+  }
+  .who-eyebrow{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:16px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:32px;
+  }
+  .who-eyebrow .dash{width:28px;height:2px;background:var(--gold);}
+  .who-left p,
+  .who-right p{
+    font-size:17px;
+    font-weight:300;
+    line-height:1.8;
+    color:#FFFFFF;
+    margin:0 0 24px;
+  }
+  .who-quote{
+    margin-top:40px;
+    border-left:3px solid var(--gold);
+    padding-left:28px;
+  }
+  .who-quote .lead{
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(20px,2.2vw,26px);
+    line-height:1.45;
+    color:#FFFFFF;
+    margin:0 0 14px;
+  }
+  .who-quote .question{
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(20px,2.2vw,26px);
+    line-height:1.45;
+    color:var(--gold);
+    margin:0;
+  }
+  .who-profile-name{
+    font-family:'DM Sans',sans-serif;
+    font-weight:700;
+    font-size:20px;
+    color:var(--gold);
+    margin:0 0 12px;
+  }
+  .who-right .who-profile-name:not(:first-child){
+    margin-top:40px;
+  }
+
+  /* ---------- KATILIMCILAR NE DEDİ ---------- */
+  .testimonials{
+    background:var(--bg);
+    padding:12vh 7vw;
+  }
+  .testimonials-eyebrow{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:14px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:40px;
+  }
+  .testimonials-eyebrow .dash{width:28px;height:1px;background:var(--gold);}
+  .testimonial-card{
+    max-width:720px;
+    border-left:3px solid var(--gold);
+    padding-left:28px;
+  }
+  .testimonial-card p.quote{
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(20px,2.2vw,26px);
+    line-height:1.6;
+    color:var(--ink);
+    margin:0 0 20px;
+  }
+  .testimonial-card .attribution{
+    font-size:15px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- ÜÇ ADIM (Farkındalık / Regülasyon / Kapasite) ---------- */
+  .steps{
+    background:var(--bg);
+    padding:6vh 7vw 12vh;
+  }
+  .steps-title{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:16px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:6vh;
+  }
+  .steps-title .dash{width:28px;height:2px;background:var(--gold);}
+  .steps-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+  }
+  .step{
+    padding:0 4vw;
+    border-left:1px solid rgba(17,17,17,0.1);
+  }
+  .step:first-child{
+    padding-left:0;
+    border-left:none;
+  }
+  .step .num{
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:0.04em;
+    color:var(--gold);
+    margin-bottom:22px;
+  }
+  .step h3{
+    font-family:'Lora',serif;
+    font-weight:700;
+    font-size:26px;
+    margin:0 0 18px;
+    color:var(--ink);
+  }
+  .step p{
+    font-size:17px;
+    line-height:1.7;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
+  @media (max-width:820px){
+    .split{grid-template-columns:1fr;}
+    .left-col{position:relative;height:auto;padding:10vh 6vw 4vh;border-right:none;border-bottom:1px solid rgba(0,0,0,0.08);}
+    .right-inner{position:sticky;top:0;}
+    .approach-grid{grid-template-columns:1fr;gap:6vh;}
+    .approach-quote-block{padding-left:24px;}
+    .final-grid{grid-template-columns:1fr;gap:8vh;}
+    .who-grid{grid-template-columns:1fr;gap:6vh;}
+    .steps-grid{grid-template-columns:1fr;gap:6vh;}
+    .step{border-left:none;padding-left:0;border-top:1px solid rgba(17,17,17,0.1);padding-top:5vh;}
+    .step:first-child{border-top:none;padding-top:0;}
+    .hero-inner{padding:12vh 6vw;}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <svg class="hero-pattern" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <path d="M -100 900 C 300 800, 250 500, 600 420 C 950 340, 900 100, 1300 30" stroke="#F5F2EA" stroke-width="1.2" fill="none"/>
+    <path d="M -150 700 C 250 600, 350 380, 700 320 C 1050 260, 1000 60, 1450 10" stroke="#F5F2EA" stroke-width="0.8" fill="none"/>
+    <path d="M -80 1000 C 350 950, 400 650, 780 580" stroke="#F5F2EA" stroke-width="1" fill="none"/>
+  </svg>
+
+  <div class="hero-logo">
+    <span class="l1">Embodied</span>
+    <span class="l2">Capacity</span>
+  </div>
+
+  <div class="hero-inner">
+    <h1>
+      <span class="strong-line">Biliyoruz. Anlıyoruz.</span>
+      <span class="soft-line">Ama ihtiyaç anında yine eskisi gibi davranıyoruz.</span>
+    </h1>
+    <div class="divider"></div>
+    <p>Bir konuşmayı erteliyoruz. Hayır diyemiyoruz. Toplantıda sessiz kalıyoruz.</p>
+    <p>Değişim, yalnızca yeni bilgiler edinmekle gerçekleşmiyor. Zihnimiz ne yapması gerektiğini bilse de, yeni davranışlar ancak beden için tanıdık hâle geldiklerinde sürdürülebilir oluyor.</p>
+    <div class="hero-cta">
+      <a class="cta-solid" href="#">Programı Keşfet →</a>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="circle">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#F5F2EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+    <span>kaydır</span>
+  </div>
+</section>
+
+<section class="approach">
+  <div class="approach-grid">
+    <div class="approach-left" data-parallax="0.06">
+      <div class="eyebrow"><span class="dash"></span>Yaklaşımımız</div>
+      <h2 class="approach-headline">Davranış değişimi bedeni dışarıda bırakarak gerçekleşemez. Beden, davranışın gerçekleştiği yerdir.</h2>
+    </div>
+    <div class="approach-right" data-parallax="-0.04">
+      <p>Davranışlarımız yalnızca düşüncelerimizin sonucu değildir. Bedenimizin o anda nasıl durduğu, duyularımızın ne algıladığı ve çevreyle nasıl ilişki kurduğumuz; karar anlarında hangi davranışların bizim için mümkün olacağını belirler.</p>
+    </div>
+  </div>
+
+  <div class="approach-quote-block" data-reveal>
+    <p class="quote">Yeni bir model sunmuyoruz. Zaten bildiklerinizi hayata geçirebilmeniz için farklı bir bakış getiriyoruz.</p>
+    <p class="quote-sub">Otomatik davranış kalıplarının bedenimizde nasıl yerleştiğini fark ediyor, yeni davranışları bedende deneyimliyor, tanıdık hale getirerek günlük hayata taşıyacak kapasiteyi geliştiriyoruz. Amacımız, bilgiyi ihtiyaç anında kullanabileceğiniz bedensel kapasiteyi geliştirmek.</p>
+  </div>
+</section>
+
+<section class="steps">
+  <h2 class="steps-title"><span class="dash"></span>Üç Aşama</h2>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="num">01</div>
+      <h3>Farkındalık</h3>
+      <p>Bedensel sinyalleri ve otomatik tepkileri fark etme ve tanıma.</p>
+    </div>
+    <div class="step">
+      <div class="num">02</div>
+      <h3>Regülasyon</h3>
+      <p>Otomatik tepki yerine yanıt verebilmek; baskı altında dahi merkeze gelebilmek.</p>
+    </div>
+    <div class="step">
+      <div class="num">03</div>
+      <h3>Kapasite</h3>
+      <p>Farklı davranış seçeneklerini bedende tanıdık hâle getirerek ihtiyaç anında erişilebilir kılmak.</p>
+    </div>
+  </div>
+</section>
+
+<div class="split" id="pinWrap">
+  <div class="left-col">
+    <div class="dash"></div>
+    <div class="label">Kimlerle Çalışıyoruz</div>
+    <p class="subline">Yalnızca anlamakla kalmayan, deneyimleyerek değişmek isteyenlerle çalışıyoruz.</p>
+  </div>
+
+  <div class="right-col">
+    <div class="right-inner">
+      <div class="panel" id="panel1" style="z-index:1;">
+        <svg class="pattern" viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <path d="M -50 850 C 150 750, 100 550, 300 480 C 500 410, 480 200, 700 100" stroke="#F5F2EA" stroke-width="1.4" fill="none"/>
+          <path d="M -80 700 C 100 650, 180 480, 380 420 C 580 360, 560 150, 780 40" stroke="#F5F2EA" stroke-width="1" fill="none"/>
+          <path d="M -30 950 C 200 880, 220 650, 420 560 C 620 470, 600 260, 850 160" stroke="#F5F2EA" stroke-width="0.8" fill="none"/>
+          <path d="M 50 900 C 220 820, 260 620, 460 540" stroke="#F5F2EA" stroke-width="1.2" fill="none"/>
+          <circle cx="300" cy="480" r="3" fill="#F5F2EA"/>
+          <circle cx="480" cy="200" r="2.5" fill="#F5F2EA"/>
+          <circle cx="380" cy="420" r="2" fill="#F5F2EA"/>
+        </svg>
+        <div class="panel-content">
+        <div class="p-label">Koçlar</div>
+        <h2>Farkındalık tek başına değişim yaratmaz.</h2>
+        <p>Danışanlarınızın farkındalığını kalıcı davranışlara dönüştürecek araçlar edinin. Koçluk güçlü sorular, farkındalık ve yeni bakış açıları yaratır. Peki ya danışan fark ettiğinde ama yine de değişmediğinde?</p>
+        <p>Danışan yalnızca hikâyesini getirmez. Alışkanlıklarını, otomatik tepkilerini, bedenini ve mevcut kapasitesini de getirir.</p>
+        <p>Bedenle çalışmayı öğrendiğinizde yalnızca yeni bir teknik eklemezsiniz. Danışanınızın değişim sürecini tamamen farklı bir yerden görmeye başlarsınız. Kendi merkezinizde kalabilme kapasiteniz, danışanınızın da regüle olmasını destekler.</p>
+        <a class="cta" href="program-koclar.html">Programı İncele</a>
+        </div>
+      </div>
+
+      <div class="panel" id="panel2" style="z-index:2;">
+        <svg class="pattern" viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <path d="M -50 850 C 150 750, 100 550, 300 480 C 500 410, 480 200, 700 100" stroke="#F5F2EA" stroke-width="1.4" fill="none"/>
+          <path d="M -80 700 C 100 650, 180 480, 380 420 C 580 360, 560 150, 780 40" stroke="#F5F2EA" stroke-width="1" fill="none"/>
+          <path d="M -30 950 C 200 880, 220 650, 420 560 C 620 470, 600 260, 850 160" stroke="#F5F2EA" stroke-width="0.8" fill="none"/>
+          <path d="M 50 900 C 220 820, 260 620, 460 540" stroke="#F5F2EA" stroke-width="1.2" fill="none"/>
+          <circle cx="300" cy="480" r="3" fill="#F5F2EA"/>
+          <circle cx="480" cy="200" r="2.5" fill="#F5F2EA"/>
+          <circle cx="380" cy="420" r="2" fill="#F5F2EA"/>
+        </svg>
+        <div class="panel-content">
+        <div class="p-label">Liderler</div>
+        <h2>Bilmek, baskı altında yapabilmek değildir.</h2>
+        <p>Zorlandığımız anlarda sistem yeni öğrendiklerimize değil; en tanıdık olana yönelir. Bu yüzden liderlik yalnızca ne bildiğinizle değil; baskı altında hangi davranışlara erişebildiğinizle ilgilidir.</p>
+        <p>Lider olarak duruşunuz, sakinliğiniz ve belirsizlik karşısında verdiğiniz tepki, ekibinizi sözlerinizden daha fazla etkiler.</p>
+        <p>Embodied Capacity, baskı altında daha fazla davranış seçeneğine erişebileceğiniz bedensel kapasiteyi geliştirmeyi amaçlar.</p>
+        <a class="cta" href="program-liderler.html">Programı İncele</a>
+        </div>
+      </div>
+
+      <div class="panel" id="panel3" style="z-index:3;">
+        <svg class="pattern" viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <path d="M -50 850 C 150 750, 100 550, 300 480 C 500 410, 480 200, 700 100" stroke="#F5F2EA" stroke-width="1.4" fill="none"/>
+          <path d="M -80 700 C 100 650, 180 480, 380 420 C 580 360, 560 150, 780 40" stroke="#F5F2EA" stroke-width="1" fill="none"/>
+          <path d="M -30 950 C 200 880, 220 650, 420 560 C 620 470, 600 260, 850 160" stroke="#F5F2EA" stroke-width="0.8" fill="none"/>
+          <path d="M 50 900 C 220 820, 260 620, 460 540" stroke="#F5F2EA" stroke-width="1.2" fill="none"/>
+          <circle cx="300" cy="480" r="3" fill="#F5F2EA"/>
+          <circle cx="480" cy="200" r="2.5" fill="#F5F2EA"/>
+          <circle cx="380" cy="420" r="2" fill="#F5F2EA"/>
+        </svg>
+        <div class="panel-content">
+        <div class="p-label">Birebir Çalışmalar</div>
+        <h2>Bazen ihtiyaç bir program değil, birebir çalışmadır.</h2>
+        <p>Koç veya lider olarak, kendi gündeminizle birebir çalışabilirsiniz. İster liderlikte zorlandığınız bir eşik, ister koçluk pratiğinizde tekrar eden bir tema olsun; bu noktaya birlikte bakarız.</p>
+        <p>Sistem bakışı, Gestalt ve bedensel öğrenme yaklaşımımızla, ihtiyaç duyduğunuz anda erişebileceğiniz kapasiteyi geliştiririz.</p>
+        <a class="cta" href="#">Detaylı Bilgi Al</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="case">
+  <div class="case-eyebrow"><span class="dash"></span>Gerçek Hayattan</div>
+
+  <div class="case-quote-top">
+    <p class="quote-text">"Kuş olmak istiyorum ama çoğu zaman tavşan gibi yaşıyorum; o tavşan deliğinden çıkamıyorum."</p>
+    <div class="attribution">
+      <div class="dash"></div>
+      Üst Düzey Yönetici — Danışan
+    </div>
+  </div>
+
+  <div class="case-narrative">
+    <p>Bir üst düzey yönetici, bir seansta kendini böyle tarif etmişti. Stratejik düşünmeyi biliyordu. Yeni rolü de bunu gerektiriyordu. Ancak kritik toplantılar başladığında dikkati yeniden ayrıntılara kayıyor, kendini yine aynı "tavşan deliğinde" buluyordu.</p>
+    <p>Sürece bedeni de dahil ettiğimizde yalnızca düşüncelerine değil; o anki duruşuna, dikkatine ve tepki verme biçimine de bakmaya başladı. Ayrıntılara saplandığı anlarda omuzları öne geliyor, nefesi kısalıyor ve bakışı daralıyordu. Bedenindeki bu değişimleri fark ettikçe, merkezine dönmeyi ve yeniden seçim yapabilecek alana gelmeyi öğrenmeye başladı.</p>
+    <p>Haftalar sonra aynı toplantıda bu kez önce merkezine geldi. Sonra konuştu ve tekrar büyük resme dönebildi.</p>
+    <div class="case-callout">
+      <p>Bir süre sonra "kuş gibi düşünmek" yalnızca güzel bir metafor olmaktan çıktı. İhtiyaç duyduğu anda erişebildiği bir kapasiteye dönüştü.</p>
+    </div>
+  </div>
+</section>
+
+<section class="who">
+  <div class="who-photo-bg"></div>
+  <div class="who-bg"></div>
+
+  <div class="who-inner">
+    <div class="who-eyebrow"><span class="dash"></span>Biz Kimiz</div>
+    <div class="who-grid">
+      <div class="who-left">
+        <p>Embodied Capacity, Mine Turalı ve Duygu Arlı Gürler'in farklı disiplinlerden getirdikleri deneyim ve yaklaşımların bir araya gelmesiyle oluştu.</p>
+
+        <div class="who-quote">
+          <p class="lead">Farklı yollardan geldik. Ama aynı soruda buluştuk:</p>
+          <p class="question">İnsan neden bildiğini hayata geçiremiyor?</p>
+        </div>
+      </div>
+
+      <div class="who-right" data-reveal-slow>
+        <p class="who-profile-name">Mine Turalı</p>
+        <p>Koçluk, takım ve sistem koçluğu, Gestalt, Leadership Embodiment ve uzun yıllara dayanan yoga pratiğinden besleniyor. Davranış değişimine, deneyim ve bedenin öğrenmedeki rolünü merkeze alan bir yaklaşımla çalışıyor.</p>
+
+        <p class="who-profile-name">Duygu Arlı Gürler</p>
+        <p>Global liderlik ve insan gelişimi deneyimini, yönetici koçluğu pratiğiyle bir araya getiriyor. Liderlik gelişimi alanındaki kurumsal deneyimini, somatik yaklaşımlarla bütünleştirerek davranış değişimi üzerine çalışıyor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="testimonials-eyebrow"><span class="dash"></span>Katılımcılar Ne Dedi</div>
+  <div class="testimonial-card">
+    <p class="quote">Yıllardır bildiğim şeyleri sonunda bedenimde hissettim. Toplantıda sessiz kalma alışkanlığım artık otomatik değil — fark edip farklı bir şey deneyebiliyorum.</p>
+    <div class="attribution">Takım Lideri — Program Katılımcısı</div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="final-watermark">EC</div>
+  <div class="final-grid">
+    <div>
+      <div class="final-eyebrow"><span class="dash"></span>Programa Katıl</div>
+      <h2>
+        <span class="l1">Bilgi değerlidir.</span>
+        <span class="l2">Stratejiler de öyle.</span>
+      </h2>
+      <p class="sub">Değişim, onları davranışa dönüştürebildiğimizde gerçekleşir.</p>
+      <div class="final-ctas">
+        <a class="final-cta-solid" href="#">Programa Katıl →</a>
+        <a class="final-cta-outline" href="#">Bize Ulaşın</a>
+      </div>
+    </div>
+
+    <div class="scope-card">
+      <div class="scope-title">Program Kapsamı</div>
+      <div class="scope-item">
+        <p class="t"><span class="dot">•</span>Liderler ve Koçlar İçin</p>
+        <p class="d">Ayrı modüller, ortak metodoloji</p>
+      </div>
+      <div class="scope-item">
+        <p class="t"><span class="dot">•</span>Beden Üzerinden Öğrenme</p>
+        <p class="d">Programlarımız hareket ettirir, hissettirir, düşündürür ve değiştirir.</p>
+      </div>
+      <div class="scope-item">
+        <p class="t"><span class="dot">•</span>Küçük Gruplar</p>
+        <p class="d">Derin deneyim için sınırlı kontenjan</p>
+      </div>
+      <div class="scope-item">
+        <p class="t"><span class="dot">•</span>Günlük Hayata Entegrasyon</p>
+        <p class="d">Gerçek bağlamda uygulama desteği</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-footer">
+    <div class="brand">Embodied Capacity</div>
+    <div class="tags">Liderlik · Koçluk · Davranış Değişimi</div>
+  </div>
+</section>
+
+<script>
+  const pinWrap = document.getElementById('pinWrap');
+  const panel1 = document.getElementById('panel1');
+  const panel2 = document.getElementById('panel2');
+  const panel3 = document.getElementById('panel3');
+
+  function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
+
+  function onScroll(){
+    const rect = pinWrap.getBoundingClientRect();
+    const total = pinWrap.offsetHeight - window.innerHeight;
+    const scrolled = clamp(-rect.top, 0, total);
+    let progress = total > 0 ? scrolled / total : 0;
+
+    const snapZoneStart = 0.15;
+    const snapZoneEnd = 0.85;
+    let t;
+    if(progress <= snapZoneStart){ t = 0; }
+    else if(progress >= snapZoneEnd){ t = 1; }
+    else { t = (progress - snapZoneStart) / (snapZoneEnd - snapZoneStart); }
+
+    const t1 = clamp(t * 2, 0, 1);
+    const t2 = clamp((t - 0.5) * 2, 0, 1);
+
+    panel1.style.transform = `translateX(0)`;
+    panel1.style.pointerEvents = t1 > 0.5 ? 'none' : 'auto';
+
+    panel2.style.transform = `translateX(${(1 - t1) * 100}%)`;
+    panel2.style.pointerEvents = (t1 > 0.5 && t2 <= 0.5) ? 'auto' : 'none';
+
+    panel3.style.transform = `translateX(${(1 - t2) * 100}%)`;
+    panel3.style.pointerEvents = t2 > 0.5 ? 'auto' : 'none';
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  function updateParallax(){
+    document.querySelectorAll('[data-parallax]').forEach(el=>{
+      const speed = parseFloat(el.dataset.parallax);
+      const rect = el.getBoundingClientRect();
+      const centerOffset = (rect.top + rect.height/2) - window.innerHeight/2;
+      el.style.transform = `translateY(${centerOffset * speed}px)`;
+    });
+  }
+  window.addEventListener('scroll', updateParallax, {passive:true});
+  window.addEventListener('resize', updateParallax);
+  updateParallax();
+
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  const revealObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, {threshold:0.2});
+  revealEls.forEach(el=>revealObserver.observe(el));
+
+  const revealSlowEls = document.querySelectorAll('[data-reveal-slow]');
+  const revealSlowObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, {threshold:0.65});
+  revealSlowEls.forEach(el=>revealSlowObserver.observe(el));
+</script>
+
+</body>
+</html>
