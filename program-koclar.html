@@ -9,7 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#F7F5F2;
+    --bg:#FFFFFF;
+    --bg-warm:#F7F7F6;
     --ink:#111111;
     --gold:#E8B23A;
     --ink-soft:rgba(17,17,17,0.62);
@@ -21,94 +22,124 @@
   html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;}
   a{color:inherit;}
 
-  /* ---------- NAV ---------- */
-  .nav{
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--dark);
+    height:70vh;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:0;
+    overflow:hidden;
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    padding:28px 7vw;
   }
-  .nav-logo{
+  .hero-logo{
+    position:absolute;
+    top:5vh;
+    left:7vw;
+    z-index:2;
     font-family:'Lora',serif;
     line-height:1.05;
+    color:#FFFFFF;
   }
-  .nav-logo .l1{display:block;font-weight:700;font-size:16px;}
-  .nav-logo .l2{display:block;font-weight:400;font-style:italic;font-size:16px;}
-  .nav-back{
+  .hero-logo .l1{
+    display:block;
+    font-weight:700;
+    font-style:normal;
+    font-size:16px;
+  }
+  .hero-logo .l2{
+    display:block;
+    font-weight:400;
+    font-style:italic;
+    font-size:16px;
+  }
+  .hero-back{
+    position:absolute;
+    top:5vh;
+    right:7vw;
+    z-index:2;
     font-size:14px;
     text-decoration:none;
-    color:var(--ink-soft);
+    color:rgba(255,255,255,0.7);
     display:flex;
     align-items:center;
     gap:8px;
   }
-
-  /* ---------- HERO ---------- */
-  .hero{
-    background:var(--dark);
-    padding:10vh 7vw 12vh;
+  .hero-inner{
+    padding:0 7vw;
+    margin-top:6vh;
   }
-  .hero-eyebrow{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    font-size:14px;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color:var(--gold);
-    font-weight:700;
-    margin-bottom:24px;
+  .hero-spacer{
+    height:70vh;
   }
-  .hero-eyebrow .dash{width:28px;height:1px;background:var(--gold);}
   .hero h1{
     font-family:'Lora',serif;
-    font-style:italic;
-    font-weight:600;
-    color:var(--cream);
-    font-size:clamp(34px,4.4vw,58px);
-    line-height:1.18;
-    margin:0 0 24px;
+    font-style:normal;
+    font-weight:400;
+    color:#FFFFFF;
+    font-size:clamp(28px,4.4vw,56px);
+    line-height:1.1;
+    margin:0;
     max-width:820px;
   }
-  .hero p{
-    font-size:18px;
-    line-height:1.7;
-    color:var(--cream-soft);
-    max-width:640px;
-    margin:0;
+  .hero h1 .strong-line{
+    display:block;
+    color:#FFFFFF;
+  }
+  .hero h1 .soft-line{
+    display:block;
+    color:var(--gold);
+    margin-top:4px;
   }
 
   /* ---------- KAZANIMLAR ---------- */
-  .gains{
+  .intro{
+    background:var(--bg);
+    position:relative;
+    z-index:1;
+    width:100%;
     padding:9vh 7vw;
+  }
+  .gains{
+    background:var(--bg-warm);
+    position:relative;
+    z-index:1;
+    width:100%;
+    padding:9vh 7vw;
+  }
+  .gains h2,
+  .gains-list{
     max-width:900px;
   }
-  .gains-eyebrow{
+  .gains h2{
     display:flex;
     align-items:center;
     gap:14px;
+    font-family:'DM Sans',sans-serif;
+    font-style:normal;
     font-size:14px;
     letter-spacing:0.12em;
     text-transform:uppercase;
     color:var(--gold);
     font-weight:700;
-    margin-bottom:24px;
+    margin:0 0 32px;
   }
-  .gains-eyebrow .dash{width:28px;height:2px;background:var(--gold);}
-  .gains h2{
-    font-family:'Lora',serif;
-    font-style:italic;
-    font-weight:600;
-    font-size:clamp(26px,3vw,36px);
-    line-height:1.25;
-    margin:0 0 24px;
-  }
+  .gains h2 .dash{width:28px;height:2px;background:var(--gold);flex-shrink:0;}
+  .gains h2 .num{letter-spacing:0;}
   .gains-intro{
+    max-width:900px;
+  }
+  .gains-intro p{
     font-size:18px;
     line-height:1.75;
     color:var(--ink-soft);
-    margin:56px 0 0;
-    max-width:720px;
+    margin:0 0 20px;
+  }
+  .gains-intro p:last-child{
+    margin-bottom:0;
   }
   .gains-list{
     display:flex;
@@ -150,7 +181,10 @@
   /* ---------- PROGRAM YAPISI ---------- */
   .structure{
     background:var(--dark);
-    padding:12vh 7vw;
+    position:relative;
+    z-index:1;
+    overflow:hidden;
+    padding:12vh 7vw 6vh;
   }
   .structure-eyebrow{
     display:flex;
@@ -164,61 +198,57 @@
     margin-bottom:24px;
   }
   .structure-eyebrow .dash{width:28px;height:1px;background:var(--gold);}
-  .structure h2{
-    font-family:'Lora',serif;
-    font-style:italic;
-    font-weight:600;
-    color:var(--cream);
-    font-size:clamp(24px,2.8vw,32px);
-    margin:0 0 48px;
-  }
   .structure-layout{
     display:grid;
-    grid-template-columns:1fr 1.4fr;
-    gap:56px;
+    grid-template-columns:1.4fr 1fr;
+    gap:32px;
     align-items:start;
   }
   .structure-card-main{
-    border:1px solid rgba(245,242,234,0.14);
-    border-radius:6px;
-    padding:8px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    width:220px;
+    justify-self:end;
   }
-  .structure-row{
+  .structure-stat{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:20px 0;
   }
-  .structure-row .label{
-    font-size:12px;
+  .structure-stat .label{
+    font-size:13px;
     letter-spacing:0.1em;
     text-transform:uppercase;
     color:var(--gold);
     font-weight:700;
+    margin:0;
   }
-  .structure-row .value{
-    font-family:'Lora',serif;
-    font-size:18px;
-    color:var(--cream);
-    text-align:right;
+  .structure-stat .value{
+    font-family:'DM Sans',sans-serif;
+    font-size:13px;
+    font-weight:500;
+    color:#FFFFFF;
   }
   .structure-note-flow p{
     font-size:16px;
     line-height:1.8;
-    color:var(--cream-soft);
+    color:rgba(255,255,255,0.85);
     margin:0 0 20px;
   }
   .structure-note-flow p:last-child{margin-bottom:0;}
-  .structure-note-emphasis{
-    font-family:'Lora',serif;
-    font-style:italic;
-    font-size:20px !important;
-    color:var(--gold) !important;
-  }
 
   /* ---------- FIT ---------- */
   .fit{
+    background:var(--bg);
+    position:relative;
+    z-index:1;
+    width:100%;
     padding:10vh 7vw 12vh;
+  }
+  .fit-eyebrow,
+  .fit h2,
+  .fit-list{
     max-width:760px;
   }
   .fit-eyebrow{
@@ -263,29 +293,31 @@
   }
 
   /* ---------- CTA ---------- */
-  .cta{
-    padding:10vh 7vw;
-    text-align:center;
-  }
-  .cta h2{
+  .cta-watermark{
+    position:absolute;
+    right:4vw;
+    top:6vh;
     font-family:'Lora',serif;
-    font-style:italic;
-    font-weight:500;
-    font-size:clamp(24px,2.8vw,34px);
-    max-width:640px;
-    margin:0 auto 40px;
-    line-height:1.4;
+    font-weight:700;
+    font-size:min(20vw,220px);
+    line-height:1;
+    color:rgba(245,242,234,0.04);
+    pointer-events:none;
+    user-select:none;
   }
+
+
   .cta-ctas{
     display:flex;
     gap:16px;
     justify-content:center;
     flex-wrap:wrap;
+    margin-top:8vh;
   }
   .cta-solid{
     padding:16px 30px;
-    background:var(--dark);
-    color:var(--cream);
+    background:var(--gold);
+    color:var(--dark);
     font-weight:700;
     font-size:15px;
     text-decoration:none;
@@ -297,12 +329,34 @@
   .cta-outline{
     padding:16px 30px;
     background:transparent;
-    border:1px solid rgba(17,17,17,0.2);
-    color:var(--ink);
+    border:1px solid rgba(245,242,234,0.4);
+    color:#FFFFFF;
     font-weight:500;
     font-size:15px;
     text-decoration:none;
     border-radius:4px;
+  }
+  .final-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:6vh;
+    padding-top:32px;
+    border-top:1px solid rgba(245,242,234,0.1);
+    position:relative;
+    z-index:1;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .final-footer .brand{
+    font-family:'Lora',serif;
+    font-weight:700;
+    font-size:16px;
+    color:rgba(245,242,234,0.55);
+  }
+  .final-footer .tags{
+    font-size:14px;
+    color:rgba(245,242,234,0.4);
   }
 
   @media(max-width:820px){
@@ -313,22 +367,30 @@
 </head>
 <body>
 
-<div class="nav">
-  <div class="nav-logo">
+<section class="hero">
+  <div class="hero-logo">
     <span class="l1">EMBODIED</span>
     <span class="l2">Capacity</span>
   </div>
-  <a class="nav-back" href="index.html">← Ana Sayfaya Dön</a>
-</div>
+  <a class="hero-back" href="index.html">← <span>Ana Sayfa</span></a>
 
-<section class="hero">
-  <div class="hero-eyebrow"><span class="dash"></span>Koçlar İçin</div>
-  <h1>Zihinsel farkındalık yetmediğinde, değişim nereden başlar?</h1>
+  <div class="hero-inner">
+    <h1><span class="strong-line">Zihinsel farkındalık yetmediğinde,</span><span class="soft-line">değişim nereden başlar?</span></h1>
+  </div>
+</section>
+
+<div class="hero-spacer"></div>
+
+<section class="intro">
+  <div class="gains-intro">
+    <p>Modeli, soruyu, yöntemi biliyor olabilirsiniz. Ama zor bir anda bunları nasıl kullandığınız; danışanla nasıl temas kurduğunuz, kendi merkezinizi nasıl koruduğunuz ve bedeninizde olup biteni ne kadar fark ettiğiniz belirleyici olur.</p>
+    <p>Danışan için de fark etmek her zaman değişebilmek anlamına gelmez. Ne yaşadığını anlayabilir, kalıplarını görebilir; ancak stres veya zorlayıcı anlarda yine aynı tepki biçimlerine dönebilir.</p>
+    <p>Bu program yeni bir koçluk tekniği öğretmez. Bedenin koçluk sürecine nasıl dahil edilebileceğini önce kendi deneyiminiz üzerinden keşfeder, ardından bunu çalışmalarınıza taşırsınız. Kendi duruşunuzu ve merkezde kalabilme kapasitenizi geliştirerek, danışanlarınızın değişim sürecini daha kalıcı bir yerden desteklersiniz.</p>
+  </div>
 </section>
 
 <section class="gains">
-  <div class="gains-eyebrow"><span class="dash"></span>Ne Kazanacaksınız?</div>
-  <h2>Bu program koçluğunuza ne katacak?</h2>
+  <h2><span class="dash"></span>Bu program koçluğunuza ne katacak?</h2>
 
   <div class="gains-list">
     <div class="gain-item" data-reveal>
@@ -349,7 +411,7 @@
       <div class="gain-num">03</div>
       <div>
         <p class="gain-title">Bedensel Sinyalleri Okuyabilmek</p>
-        <p class="gain-desc">Hem kendi bedeninizde hem danışanınızın bedensel ipuçlarında ortaya çıkan anlık değişimleri fark ederek, seansı hikâyenin ötesindeki gerçek alana taşıyabileceksiniz.</p>
+        <p class="gain-desc">Kendi bedeninizde ve danışanınızda ortaya çıkan anlık değişimleri fark ederek, bunları koçluk sürecinde bir kaynak olarak kullanabileceksiniz.</p>
       </div>
     </div>
     <div class="gain-item" data-reveal>
@@ -374,40 +436,6 @@
       </div>
     </div>
   </div>
-
-  <p class="gains-intro">Bu program bir teknik eğitimi değildir. Bedenin koçluk sürecine nasıl dahil edilebileceğini önce kendi deneyiminiz üzerinden keşfeder, ardından bunu çalışmalarınıza taşırsınız.<br>Kendi duruşunuzu ve merkezde kalabilme kapasitenizi geliştirerek, danışanlarınızın değişim sürecini daha kalıcı bir yerden desteklersiniz.</p>
-</section>
-
-<section class="structure">
-  <div class="structure-eyebrow"><span class="dash"></span>Program Yapısı</div>
-  <h2>Süre, format ve yer.</h2>
-
-  <div class="structure-layout">
-    <div class="structure-card structure-card-main">
-      <div class="structure-row">
-        <div class="label">Süre</div>
-        <div class="value">2 tam gün</div>
-      </div>
-      <div class="structure-row">
-        <div class="label">Saat</div>
-        <div class="value">10.00–16.00</div>
-      </div>
-      <div class="structure-row">
-        <div class="label">Format</div>
-        <div class="value">Yüz yüze</div>
-      </div>
-      <div class="structure-row">
-        <div class="label">Kontenjan</div>
-        <div class="value">En fazla 12 kişi</div>
-      </div>
-    </div>
-
-    <div class="structure-note-flow">
-      <p>Program; deneyim, kısa teorik çerçeveler, eşli çalışmalar ve grup uygulamalarının ritmik bir akışıyla ilerler.</p>
-      <p class="structure-note-emphasis">Eğitim bununla bitmiyor.</p>
-      <p>Programın ardından iki ay boyunca dört çevrim içi grup buluşmasıyla öğrendiklerinizi günlük yaşamınıza ve koçluk pratiğinize taşımanız desteklenir.</p>
-    </div>
-  </div>
 </section>
 
 <section class="fit">
@@ -420,11 +448,39 @@
   </ul>
 </section>
 
-<section class="cta">
-  <h2>Bu program size uygunsa</h2>
+<section class="structure">
+  <div class="cta-watermark">EC</div>
+  <div class="structure-eyebrow"><span class="dash"></span>Program Yapısı</div>
+  <div class="structure-layout">
+    <div class="structure-note-flow">
+      <p>Program; deneyim, kısa teorik çerçeveler, eşli çalışmalar ve grup uygulamalarıyla deneyimsel bir çalışmadır.</p>
+      <p>Programın ardından iki ay boyunca dört çevrim içi grup buluşmasıyla öğrendiklerinizi günlük yaşamınıza ve koçluk pratiğinize taşımanız desteklenir.</p>
+    </div>
+
+    <div class="structure-card structure-card-main">
+      <div class="structure-stat">
+        <div class="label">Süre</div>
+        <div class="value">2 tam gün</div>
+      </div>
+      <div class="structure-stat">
+        <div class="label">Format</div>
+        <div class="value">Yüz yüze</div>
+      </div>
+      <div class="structure-stat">
+        <div class="label">Kontenjan</div>
+        <div class="value">En fazla 12 kişi</div>
+      </div>
+    </div>
+  </div>
+
   <div class="cta-ctas">
     <a class="cta-outline" href="#">Programı PDF Olarak İndir</a>
     <a class="cta-solid" href="#">Bir Sonraki Grup Açıldığında Haber Alın →</a>
+  </div>
+
+  <div class="final-footer">
+    <div class="brand">Embodied Capacity</div>
+    <div class="tags">Liderlik · Koçluk · Davranış Değişimi</div>
   </div>
 </section>
 

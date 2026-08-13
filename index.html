@@ -9,7 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#F7F5F2;
+    --bg:#FFFFFF;
+    --bg-warm:#F7F7F6;
     --ink:#111111;
     --gold:#E8B23A;
     --ink-soft:rgba(17,17,17,0.62);
@@ -23,11 +24,18 @@
   /* ---------- HERO ---------- */
   .hero{
     background:var(--dark);
-    min-height:100vh;
-    position:relative;
+    height:100vh;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:0;
     overflow:hidden;
     display:flex;
     align-items:center;
+  }
+  .hero-spacer{
+    height:100vh;
   }
   .hero-pattern{
     position:absolute;
@@ -42,7 +50,7 @@
     z-index:2;
     font-family:'Lora',serif;
     line-height:1.05;
-    color:var(--cream);
+    color:#FFFFFF;
   }
   .hero-logo .l1{
     display:block;
@@ -92,7 +100,7 @@
     position:relative;
     z-index:1;
     max-width:900px;
-    padding:30vh 7vw 14vh;
+    padding:14vh 7vw 8vh;
   }
   .hero h1{
     font-family:'Lora',serif;
@@ -100,11 +108,11 @@
     font-weight:400;
     line-height:1.1;
     margin:24px 0 0;
-    font-size:clamp(32px,5.2vw,68px);
+    font-size:clamp(28px,4.4vw,56px);
   }
   .hero h1 .strong-line{
     display:block;
-    color:var(--cream);
+    color:#FFFFFF;
   }
   .hero h1 .soft-line{
     display:block;
@@ -115,7 +123,7 @@
     width:64px;
     height:2px;
     background:var(--gold);
-    margin:52px 0 44px;
+    margin:32px 0 28px;
   }
   .hero p{
     font-size:19px;
@@ -123,7 +131,7 @@
     line-height:1.75;
     color:rgba(255,255,255,0.85);
     max-width:720px;
-    margin:0 0 20px;
+    margin:0 0 14px;
   }
   .hero-cta{
     margin-top:28px;
@@ -148,7 +156,9 @@
   .split{
     display:grid;
     grid-template-columns:40% 60%;
-    min-height:280vh;
+    min-height:420vh;
+    position:relative;
+    z-index:1;
   }
   .left-col{
     position:sticky;
@@ -219,29 +229,29 @@
   .panel .p-label{
     font-family:'Lora',serif;
     font-weight:500;
-    font-size:clamp(28px,3.2vw,40px);
+    font-size:clamp(30px,3.4vw,40px);
     line-height:1.15;
-    color:var(--cream);
-    margin-bottom:16px;
+    color:#FFFFFF;
+    margin-bottom:20px;
   }
   .panel h2{
     font-family:'Lora',serif;
     font-weight:500;
-    font-size:clamp(24px,2.6vw,32px);
-    line-height:1.15;
+    font-size:clamp(24px,2.8vw,32px);
+    line-height:1.2;
     letter-spacing:-0.005em;
-    margin:0 0 24px;
+    margin:0 0 28px;
     color:var(--gold);
   }
   .panel p{
     font-size:18px;
     font-weight:400;
-    line-height:1.55;
+    line-height:1.65;
     color:#FFFFFF;
-    margin:0 0 16px;
+    margin:0 0 18px;
   }
   .panel .cta{
-    margin-top:18px;
+    margin-top:26px;
     display:inline-block;
     padding:14px 32px;
     border:none;
@@ -260,6 +270,8 @@
     padding:12vh 7vw;
     color:var(--ink);
     overflow:hidden;
+    position:relative;
+    z-index:1;
   }
   .approach-grid{
     display:grid;
@@ -283,7 +295,7 @@
     font-family:'Lora',serif;
     font-style:normal;
     font-weight:600;
-    font-size:clamp(30px,3.6vw,46px);
+    font-size:clamp(26px,3vw,38px);
     line-height:1.3;
     margin:0;
     color:var(--ink);
@@ -326,9 +338,10 @@
 
   /* ---------- GERÇEK HAYATTAN (vaka) ---------- */
   .case{
-    background:var(--bg);
+    background:var(--bg-warm);
     padding:12vh 7vw;
     position:relative;
+    z-index:1;
   }
   .case-eyebrow{
     display:flex;
@@ -392,15 +405,20 @@
     background:var(--dark);
     padding:14vh 7vw 6vh;
     position:relative;
+    z-index:1;
     overflow:hidden;
+  }
+  .final-top{
+    position:relative;
   }
   .final-watermark{
     position:absolute;
     right:4vw;
-    bottom:6vh;
+    top:50%;
+    transform:translateY(-50%);
     font-family:'Lora',serif;
     font-weight:700;
-    font-size:min(30vw,420px);
+    font-size:min(26vw,360px);
     line-height:1;
     color:rgba(245,242,234,0.04);
     pointer-events:none;
@@ -408,23 +426,11 @@
   }
   .final-grid{
     display:grid;
-    grid-template-columns:1.3fr 1fr;
+    grid-template-columns:1fr;
     gap:6vw;
     position:relative;
     z-index:1;
   }
-  .final-eyebrow{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    font-size:14px;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color:var(--gold);
-    font-weight:700;
-    margin-bottom:28px;
-  }
-  .final-eyebrow .dash{width:28px;height:1px;background:var(--gold);}
   .final h2{
     font-family:'Lora',serif;
     font-style:normal;
@@ -433,8 +439,8 @@
     line-height:1.3;
     margin:0;
   }
-  .final h2 .l1{display:block;color:var(--cream);}
-  .final h2 .l2{display:block;color:var(--cream);margin-top:2px;}
+  .final h2 .l1{display:block;color:#FFFFFF;}
+  .final h2 .l2{display:block;color:#FFFFFF;margin-top:2px;}
   .final .sub{
     font-family:'Lora',serif;
     font-style:normal;
@@ -450,10 +456,11 @@
     gap:16px;
     flex-wrap:wrap;
   }
-  .final-cta-solid{
+  .final-cta-outline{
     padding:16px 30px;
-    background:var(--gold);
-    color:var(--dark);
+    background:transparent;
+    border:1px solid rgba(245,242,234,0.6);
+    color:#FFFFFF;
     font-weight:700;
     font-size:15px;
     text-decoration:none;
@@ -461,48 +468,6 @@
     display:inline-flex;
     align-items:center;
     gap:8px;
-  }
-  .final-cta-outline{
-    padding:16px 30px;
-    background:transparent;
-    border:1px solid rgba(245,242,234,0.3);
-    color:var(--cream);
-    font-weight:500;
-    font-size:15px;
-    text-decoration:none;
-    border-radius:4px;
-  }
-  .scope-card{
-    border:1px solid rgba(245,242,234,0.14);
-    border-radius:6px;
-    padding:36px;
-    align-self:start;
-  }
-  .scope-card .scope-title{
-    font-size:13px;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color:var(--gold);
-    font-weight:700;
-    margin-bottom:26px;
-  }
-  .scope-item{
-    padding:20px 0;
-    border-top:1px solid rgba(245,242,234,0.12);
-  }
-  .scope-item:first-of-type{border-top:none;padding-top:0;}
-  .scope-item .dot{color:var(--gold);margin-right:8px;}
-  .scope-item .t{
-    font-size:17px;
-    font-weight:700;
-    color:var(--cream);
-    margin:0 0 6px;
-  }
-  .scope-item .d{
-    font-size:15px;
-    color:var(--cream-soft);
-    margin:0;
-    padding-left:18px;
   }
   .final-footer{
     display:flex;
@@ -530,6 +495,7 @@
   /* ---------- BİZ KİMİZ ---------- */
   .who{
     position:relative;
+    z-index:1;
     background:var(--dark);
     padding:14vh 7vw;
     overflow:hidden;
@@ -619,21 +585,56 @@
     color:var(--gold);
     margin:0;
   }
+  .who-profile-head{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:0 0 12px;
+    line-height:1;
+  }
   .who-profile-name{
     font-family:'DM Sans',sans-serif;
     font-weight:700;
     font-size:20px;
+    line-height:1;
     color:var(--gold);
-    margin:0 0 12px;
+    margin:0;
   }
-  .who-right .who-profile-name:not(:first-child){
+  .who-right .who-profile-head:not(:first-child){
     margin-top:40px;
+  }
+  .who-linkedin{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:24px;
+    height:24px;
+    border:1px solid var(--cream);
+    border-radius:50%;
+    flex-shrink:0;
+    margin-top:-2px;
+    transition:background 0.2s ease;
+  }
+  .who-linkedin:hover{
+    background:var(--cream);
+  }
+  .who-linkedin svg{
+    width:12px;
+    height:12px;
+    fill:var(--cream);
+    transform:translateY(-0.5px);
+    transition:fill 0.2s ease;
+  }
+  .who-linkedin:hover svg{
+    fill:var(--dark, #111111);
   }
 
   /* ---------- KATILIMCILAR NE DEDİ ---------- */
   .testimonials{
     background:var(--bg);
-    padding:12vh 7vw;
+    padding:18vh 7vw;
+    position:relative;
+    z-index:1;
   }
   .testimonials-eyebrow{
     display:flex;
@@ -644,7 +645,7 @@
     text-transform:uppercase;
     color:var(--gold);
     font-weight:700;
-    margin-bottom:40px;
+    margin-bottom:56px;
   }
   .testimonials-eyebrow .dash{width:28px;height:1px;background:var(--gold);}
   .testimonial-card{
@@ -668,8 +669,10 @@
 
   /* ---------- ÜÇ ADIM (Farkındalık / Regülasyon / Kapasite) ---------- */
   .steps{
-    background:var(--bg);
+    background:var(--bg-warm);
     padding:6vh 7vw 12vh;
+    position:relative;
+    z-index:1;
   }
   .steps-title{
     display:flex;
@@ -717,11 +720,15 @@
   }
 
   @media (max-width:820px){
-    .split{grid-template-columns:1fr;}
+    .split{grid-template-columns:1fr;min-height:auto;}
     .left-col{position:relative;height:auto;padding:10vh 6vw 4vh;border-right:none;border-bottom:1px solid rgba(0,0,0,0.08);}
-    .right-col{min-height:280vh;}
+    .right-col{min-height:360vh;}
     .right-inner{position:sticky;top:0;height:100vh;overflow:hidden;}
-    .panel{position:absolute;inset:0;}
+    .panel{position:absolute;inset:0;align-items:flex-start;padding:12vh 6vw;overflow-y:auto;}
+    .panel .p-label{font-size:clamp(24px,7vw,32px);margin-bottom:12px;}
+    .panel h2{font-size:clamp(19px,5.5vw,24px);line-height:1.3;margin:0 0 16px;}
+    .panel p{font-size:15.5px;line-height:1.65;margin:0 0 12px;}
+    .panel .cta{margin-top:14px;padding:12px 26px;font-size:13px;}
     .approach-grid{grid-template-columns:1fr;gap:6vh;}
     .approach-quote-block{padding-left:24px;}
     .final-grid{grid-template-columns:1fr;gap:8vh;}
@@ -768,6 +775,8 @@
     <span>kaydır</span>
   </div>
 </section>
+
+<div class="hero-spacer"></div>
 
 <section class="approach">
   <div class="approach-grid">
@@ -892,7 +901,6 @@
   <div class="case-narrative">
     <p>Bir üst düzey yönetici, bir seansta kendini böyle tarif etmişti. Stratejik düşünmeyi biliyordu. Yeni rolü de bunu gerektiriyordu. Ancak kritik toplantılar başladığında dikkati yeniden ayrıntılara kayıyor, kendini yine aynı "tavşan deliğinde" buluyordu.</p>
     <p>Sürece bedeni de dahil ettiğimizde yalnızca düşüncelerine değil; o anki duruşuna, dikkatine ve tepki verme biçimine de bakmaya başladı. Ayrıntılara saplandığı anlarda omuzları öne geliyor, nefesi kısalıyor ve bakışı daralıyordu. Bedenindeki bu değişimleri fark ettikçe, merkezine dönmeyi ve yeniden seçim yapabilecek alana gelmeyi öğrenmeye başladı.</p>
-    <p>Haftalar sonra aynı toplantıda bu kez önce merkezine geldi. Sonra konuştu ve tekrar büyük resme dönebildi.</p>
     <div class="case-callout">
       <p>Bir süre sonra "kuş gibi düşünmek" yalnızca güzel bir metafor olmaktan çıktı. İhtiyaç duyduğu anda erişebildiği bir kapasiteye dönüştü.</p>
     </div>
@@ -916,10 +924,20 @@
       </div>
 
       <div class="who-right" data-reveal-slow>
-        <p class="who-profile-name">Mine Turalı</p>
+        <div class="who-profile-head">
+          <p class="who-profile-name">Mine Turalı</p>
+          <a class="who-linkedin" href="https://www.linkedin.com/in/mine-turalı/" target="_blank" rel="noopener" aria-label="Mine Turalı LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+        </div>
         <p>Koçluk, takım ve sistem koçluğu, Gestalt, Leadership Embodiment ve uzun yıllara dayanan yoga pratiğinden besleniyor. Davranış değişimine, deneyim ve bedenin öğrenmedeki rolünü merkeze alan bir yaklaşımla çalışıyor.</p>
 
-        <p class="who-profile-name">Duygu Arlı Gürler</p>
+        <div class="who-profile-head">
+          <p class="who-profile-name">Duygu Arlı Gürler, PCC</p>
+          <a class="who-linkedin" href="https://www.linkedin.com/in/duygu-arli-gurler-pcc-05065126/" target="_blank" rel="noopener" aria-label="Duygu Arlı Gürler LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+        </div>
         <p>Global liderlik ve insan gelişimi deneyimini, yönetici koçluğu pratiğiyle bir araya getiriyor. Liderlik gelişimi alanındaki kurumsal deneyimini, somatik yaklaşımlarla bütünleştirerek davranış değişimi üzerine çalışıyor.</p>
       </div>
     </div>
@@ -935,38 +953,18 @@
 </section>
 
 <section class="final">
-  <div class="final-watermark">EC</div>
-  <div class="final-grid">
-    <div>
-      <div class="final-eyebrow"><span class="dash"></span>Programa Katıl</div>
-      <h2>
-        <span class="l1">Bilgi değerlidir.</span>
-        <span class="l2">Stratejiler de öyle.</span>
-      </h2>
-      <p class="sub">Değişim, onları davranışa dönüştürebildiğimizde gerçekleşir.</p>
-      <div class="final-ctas">
-        <a class="final-cta-solid" href="#">Programa Katıl →</a>
-        <a class="final-cta-outline" href="#">Bize Ulaşın</a>
-      </div>
-    </div>
-
-    <div class="scope-card">
-      <div class="scope-title">Program Kapsamı</div>
-      <div class="scope-item">
-        <p class="t"><span class="dot">•</span>Liderler ve Koçlar İçin</p>
-        <p class="d">Ayrı modüller, ortak metodoloji</p>
-      </div>
-      <div class="scope-item">
-        <p class="t"><span class="dot">•</span>Beden Üzerinden Öğrenme</p>
-        <p class="d">Programlarımız hareket ettirir, hissettirir, düşündürür ve değiştirir.</p>
-      </div>
-      <div class="scope-item">
-        <p class="t"><span class="dot">•</span>Küçük Gruplar</p>
-        <p class="d">Derin deneyim için sınırlı kontenjan</p>
-      </div>
-      <div class="scope-item">
-        <p class="t"><span class="dot">•</span>Günlük Hayata Entegrasyon</p>
-        <p class="d">Gerçek bağlamda uygulama desteği</p>
+  <div class="final-top">
+    <div class="final-watermark">EC</div>
+    <div class="final-grid">
+      <div>
+        <h2>
+          <span class="l1">Bilgi değerlidir.</span>
+          <span class="l2">Stratejiler de öyle.</span>
+        </h2>
+        <p class="sub">Değişim, onları davranışa dönüştürebildiğimizde gerçekleşir.</p>
+        <div class="final-ctas">
+          <a class="final-cta-outline" href="#">Bize Ulaşın</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1002,17 +1000,20 @@
     const t1 = clamp(t * 2, 0, 1);
     const t2 = clamp((t - 0.5) * 2, 0, 1);
 
-    panel1.style.transform = `translateX(0)`;
+    const axis = isMobile() ? 'Y' : 'X';
+
+    panel1.style.transform = `translate${axis}(0)`;
     panel1.style.pointerEvents = t1 > 0.5 ? 'none' : 'auto';
 
-    panel2.style.transform = `translateX(${(1 - t1) * 100}%)`;
+    panel2.style.transform = `translate${axis}(${(1 - t1) * 100}%)`;
     panel2.style.pointerEvents = (t1 > 0.5 && t2 <= 0.5) ? 'auto' : 'none';
 
-    panel3.style.transform = `translateX(${(1 - t2) * 100}%)`;
+    panel3.style.transform = `translate${axis}(${(1 - t2) * 100}%)`;
     panel3.style.pointerEvents = t2 > 0.5 ? 'auto' : 'none';
   }
 
   window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
   onScroll();
 
   function updateParallax(){
