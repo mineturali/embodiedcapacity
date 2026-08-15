@@ -75,14 +75,26 @@
   .hero-spacer{
     height:70vh;
   }
+  .hero-eyebrow{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:14px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:24px;
+  }
+  .hero-eyebrow .dash{width:28px;height:1px;background:var(--gold);}
   .hero h1{
     font-family:'Lora',serif;
-    font-style:normal;
-    font-weight:400;
+    font-style:italic;
+    font-weight:600;
     color:#FFFFFF;
-    font-size:clamp(28px,4.4vw,56px);
-    line-height:1.1;
-    margin:0;
+    font-size:clamp(34px,4.4vw,58px);
+    line-height:1.18;
+    margin:0 0 24px;
     max-width:820px;
   }
   .hero h1 .strong-line{
@@ -93,6 +105,13 @@
     display:block;
     color:var(--gold);
     margin-top:4px;
+  }
+  .hero p{
+    font-size:18px;
+    line-height:1.7;
+    color:rgba(255,255,255,0.85);
+    max-width:640px;
+    margin:0;
   }
 
   /* ---------- KAZANIMLAR ---------- */
@@ -129,6 +148,13 @@
   }
   .gains h2 .dash{width:28px;height:2px;background:var(--gold);flex-shrink:0;}
   .gains h2 .num{letter-spacing:0;}
+  .gains-closing{
+    max-width:680px;
+    font-size:17px;
+    line-height:1.7;
+    color:var(--ink-soft);
+    margin:48px 0 0;
+  }
   .gains-intro{
     max-width:900px;
   }
@@ -198,6 +224,14 @@
     margin-bottom:24px;
   }
   .structure-eyebrow .dash{width:28px;height:1px;background:var(--gold);}
+  .structure h2{
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-weight:600;
+    color:#FFFFFF;
+    font-size:clamp(24px,2.8vw,32px);
+    margin:0 0 48px;
+  }
   .structure-layout{
     display:grid;
     grid-template-columns:1.4fr 1fr;
@@ -237,6 +271,12 @@
     margin:0 0 20px;
   }
   .structure-note-flow p:last-child{margin-bottom:0;}
+  .structure-note-emphasis{
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-size:20px !important;
+    color:var(--gold) !important;
+  }
 
   /* ---------- FIT ---------- */
   .fit{
@@ -397,45 +437,47 @@
       <div class="gain-num">01</div>
       <div>
         <p class="gain-title">Derinleşen Koçluk Duruşu</p>
-        <p class="gain-desc">Duruşunuzu, zihinsel bir odaklanma çabası olmaktan çıkarıp kökleşmiş, baskı anında savrulmayan bir kapasiteye dönüştüreceksiniz.</p>
+        <p class="gain-desc">Duruşunuzu, zihinsel bir odaklanma çabası olmaktan çıkarıp kökleşmiş, baskı anında savrulmayan bir kapasiteye dönüştürürsünüz.</p>
       </div>
     </div>
     <div class="gain-item" data-reveal>
       <div class="gain-num">02</div>
       <div>
         <p class="gain-title">Danışanı Destekleyen Bir Zemin</p>
-        <p class="gain-desc">Siz merkezde kaldığınızda danışanınızın da daha güvenli, daha açık ve daha derin çalışabildiğini deneyimleyeceksiniz.</p>
+        <p class="gain-desc">Siz merkezde kaldığınızda danışanınızın da daha güvenli, daha açık ve daha derin çalışabildiğini fark edersiniz.</p>
       </div>
     </div>
     <div class="gain-item" data-reveal>
       <div class="gain-num">03</div>
       <div>
         <p class="gain-title">Bedensel Sinyalleri Okuyabilmek</p>
-        <p class="gain-desc">Kendi bedeninizde ve danışanınızda ortaya çıkan anlık değişimleri fark ederek, bunları koçluk sürecinde bir kaynak olarak kullanabileceksiniz.</p>
+        <p class="gain-desc">Kendi bedeninizde ve danışanınızda ortaya çıkan anlık değişimleri fark etme ve bunları koçluk sürecinde bir kaynak olarak kullanma pratiğini kazanırsınız.</p>
       </div>
     </div>
     <div class="gain-item" data-reveal>
       <div class="gain-num">04</div>
       <div>
         <p class="gain-title">Tepki Yerine Yanıt Verebilmek</p>
-        <p class="gain-desc">Zorlayıcı temalar veya dirençler karşısında otomatik tepkiler (savunma, yönlendirme, çaresizlik) vermek yerine, merkezinize gelerek bilinçli koçluk yanıtları verebileceksiniz.</p>
+        <p class="gain-desc">Zorlayıcı temalar veya dirençler karşısında otomatik tepkiler (savunma, yönlendirme, çaresizlik) vermek yerine, merkezinize dönüp bilinçli koçluk yanıtları verme kapasitenizi güçlendirirsiniz.</p>
       </div>
     </div>
     <div class="gain-item" data-reveal>
       <div class="gain-num">05</div>
       <div>
         <p class="gain-title">Seçim Alanınızı Genişletmek</p>
-        <p class="gain-desc">Danışanınızın yalnızca farklı düşünceler üretmesine değil, yeni davranışları destekleyecek farklı varoluş biçimlerini de deneyimlemesine rehberlik edeceksiniz.</p>
+        <p class="gain-desc">Danışanınızın yalnızca farklı düşünceler üretmesine değil, yeni davranışları destekleyecek farklı varoluş biçimlerini de deneyimlemesine rehberlik etme becerinizi geliştirirsiniz.</p>
       </div>
     </div>
     <div class="gain-item" data-reveal>
       <div class="gain-num">06</div>
       <div>
         <p class="gain-title">Kendi Koçluk Duruşunuzun Haritası</p>
-        <p class="gain-desc">Hangi bedensel hâllere (sınır koyma, esneme, derin dinleme, meydan okuma) kolayca erişebildiğinizi, hangilerinin henüz tanıdık olmadığını görerek kendi gelişim alanınızı netleştireceksiniz.</p>
+        <p class="gain-desc">Hangi bedensel hâllere (sınır koyma, esneme, derin dinleme, meydan okuma) kolayca erişebildiğinizi, hangilerinin henüz tanıdık olmadığını görerek kendi gelişim alanınızı netleştirirsiniz.</p>
       </div>
     </div>
   </div>
+
+  <p class="gains-closing">Deneyimledikleriniz, üzerine çalıştıkça zaman içinde kapasiteye dönüşür. Fark etmek bir başlangıçtır; pratikle derinleşir.</p>
 </section>
 
 <section class="fit">
