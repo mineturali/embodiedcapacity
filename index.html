@@ -228,6 +228,7 @@
     border-radius:50%;
     background:rgba(245,242,234,0.32);
     transition:background 0.3s ease, transform 0.3s ease;
+    cursor:pointer;
   }
   .panel-dot.is-active{
     background:var(--gold);
@@ -1142,6 +1143,19 @@
   window.addEventListener('scroll', onScroll, {passive:true});
   window.addEventListener('resize', onScroll);
   onScroll();
+
+  document.querySelectorAll('.panel-dot').forEach((dot)=>{
+    dot.addEventListener('click', ()=>{
+      const index = parseInt(dot.dataset.index, 10);
+      const total = rightCol.offsetHeight - window.innerHeight;
+      const progress = index === 0 ? 0 : (index === 1 ? 0.5 : 1);
+      const desiredScrolled = progress * total;
+      const rect = rightCol.getBoundingClientRect();
+      const elementTopAbsolute = rect.top + window.scrollY;
+      const targetScrollY = elementTopAbsolute + desiredScrolled;
+      window.scrollTo({ top: targetScrollY, behavior: 'smooth' });
+    });
+  });
 
   function updateParallax(){
     document.querySelectorAll('[data-parallax]').forEach(el=>{
