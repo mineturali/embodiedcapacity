@@ -211,6 +211,28 @@
     opacity:0.24;
     pointer-events:none;
   }
+  .panel-dots{
+    position:absolute;
+    bottom:6vh;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:10;
+    display:flex;
+    flex-direction:row;
+    gap:12px;
+    align-items:center;
+  }
+  .panel-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:rgba(245,242,234,0.32);
+    transition:background 0.3s ease, transform 0.3s ease;
+  }
+  .panel-dot.is-active{
+    background:var(--gold);
+    transform:scale(1.35);
+  }
   .panel{
     position:absolute;
     inset:0;
@@ -262,6 +284,24 @@
     letter-spacing:0.01em;
     text-decoration:none;
     background:var(--gold);
+  }
+
+  /* ---------- GİRİŞ TANIMI (v1 deneme) ---------- */
+  .intro-statement{
+    background:var(--bg);
+    padding:18vh 7vw 6vh;
+    position:relative;
+    z-index:1;
+  }
+  .intro-statement p{
+    font-family:'Lora',serif;
+    font-style:normal;
+    font-weight:500;
+    font-size:clamp(22px,2.6vw,32px);
+    line-height:1.5;
+    color:var(--ink);
+    max-width:820px;
+    margin:0;
   }
 
   /* ---------- YAKLAŞIMIMIZ ---------- */
@@ -324,8 +364,8 @@
     font-family:'Lora',serif;
     font-style:italic;
     font-weight:500;
-    font-size:clamp(22px,2.4vw,30px);
-    line-height:1.6;
+    font-size:clamp(22px,2.6vw,32px);
+    line-height:1.5;
     color:var(--ink);
     margin:0 0 28px;
   }
@@ -660,8 +700,25 @@
     margin-bottom:56px;
   }
   .testimonials-eyebrow .dash{width:28px;height:1px;background:var(--gold);}
+  .testimonials-track{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .testimonials-track::-webkit-scrollbar{display:none;}
   .testimonial-card{
+    flex:0 0 100%;
+    width:100%;
+    box-sizing:border-box;
+    display:flex;
+    justify-content:center;
+    scroll-snap-align:start;
+  }
+  .testimonial-inner{
     max-width:720px;
+    width:100%;
     border-left:3px solid var(--gold);
     padding-left:28px;
   }
@@ -677,6 +734,32 @@
   .testimonial-card .attribution{
     font-size:15px;
     color:var(--ink-soft);
+  }
+  .testimonial-card .note{
+    font-style:italic;
+    font-size:14px;
+    color:var(--ink-soft);
+    margin:28px 0 0;
+  }
+  .testimonials-dots{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:32px;
+  }
+  .testimonials-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:rgba(17,17,17,0.15);
+    border:none;
+    padding:0;
+    cursor:pointer;
+    transition:background 0.3s ease, transform 0.3s ease;
+  }
+  .testimonials-dot.is-active{
+    background:var(--gold);
+    transform:scale(1.35);
   }
 
   /* ---------- ÜÇ ADIM (Farkındalık / Regülasyon / Kapasite) ---------- */
@@ -749,6 +832,7 @@
     .steps-grid{grid-template-columns:1fr;gap:6vh;}
     .step{border-left:none;padding-left:0;border-top:1px solid rgba(17,17,17,0.1);padding-top:5vh;}
     .step:first-child{border-top:none;padding-top:0;}
+    .panel-dots{bottom:auto;top:6vh;left:50%;right:auto;transform:translateX(-50%);flex-direction:row;gap:8px;}
     .hero-inner{padding:12vh 6vw;}
   }
 </style>
@@ -774,7 +858,8 @@
     </h1>
     <div class="divider"></div>
     <p>Bir konuşmayı erteliyoruz. Hayır diyemiyoruz. Toplantıda sessiz kalıyoruz.</p>
-    <p>Değişim, yalnızca yeni bilgiler edinmekle gerçekleşmiyor. Zihnimiz ne yapması gerektiğini bilse de, yeni davranışlar ancak beden için tanıdık hâle geldiklerinde sürdürülebilir oluyor.</p>
+    <p>Kalıplarımızı, nelerin bizi tetiklediğini fark ediyor, gelişim alanlarımızı görüyoruz.</p>
+    <p>Yine de bütün bunlar, ihtiyaç anında farklı davranabilmeyi sağlamıyor.</p>
     <div class="hero-cta">
       <a class="cta-solid" href="#pinWrap">Programı Keşfet →</a>
     </div>
@@ -790,6 +875,10 @@
 
 <div class="hero-spacer"></div>
 
+<section class="intro-statement">
+  <p>Embodied Capacity, bildiklerimizin davranışa dönüşmesini destekleyen bir kapasite geliştirme programıdır.</p>
+</section>
+
 <section class="approach">
   <div class="approach-grid">
     <div class="approach-left" data-parallax="0.06">
@@ -797,13 +886,13 @@
       <h2 class="approach-headline">Davranış değişimi bedeni dışarıda bırakarak gerçekleşemez. Beden, davranışın gerçekleştiği yerdir.</h2>
     </div>
     <div class="approach-right" data-parallax="-0.04">
-      <p>Davranışlarımız yalnızca düşüncelerimizin sonucu değildir. Bedenimizin o anda nasıl durduğu, duyularımızın ne algıladığı ve çevreyle nasıl ilişki kurduğumuz; karar anlarında hangi davranışların bizim için mümkün olacağını belirler.</p>
+      <p>Davranışlarımız yalnızca düşüncelerimizin sonucu değildir. Bedenimizin nasıl durduğu ve duyularımızla algıladıklarımız nasıl hissedeceğimizi; hissettiklerimiz ise hangi davranışın mümkün olacağını belirler.</p>
     </div>
   </div>
 
   <div class="approach-quote-block" data-reveal>
-    <p class="quote">Yeni bir model sunmuyoruz. Zaten bildiklerinizi hayata geçirebilmeniz için farklı bir bakış getiriyoruz.</p>
-    <p class="quote-sub">Otomatik davranış kalıplarının bedenimizde nasıl yerleştiğini fark ediyor, yeni davranışları bedende deneyimliyor, tanıdık hale getirerek günlük hayata taşıyacak kapasiteyi geliştiriyoruz. Amacımız, bilgiyi ihtiyaç anında kullanabileceğiniz bedensel kapasiteyi geliştirmek.</p>
+    <p class="quote">Bildiğimiz halde yapmakta zorlandıklarımızı değiştirebilmek için farklı bir bakış getiriyor, bedeni değişime dahil ediyoruz.</p>
+    <p class="quote-sub">Otomatik davranış kalıplarının bedenimizde nasıl yerleştiğini fark ediyor, ihtiyaç anında farklı seçeneklere erişebilmenizi mümkün kılan bedensel kapasiteyi geliştiriyoruz.</p>
   </div>
 </section>
 
@@ -832,11 +921,16 @@
   <div class="left-col">
     <div class="dash"></div>
     <div class="label">Kimlerle Çalışıyoruz</div>
-    <p class="subline">Yalnızca anlamakla kalmayan, deneyimleyerek değişmek isteyenlerle çalışıyoruz.</p>
+    <p class="subline">Koçlar ve liderler için, kendi pratiklerine yönelik iki farklı program sunuyoruz.</p>
   </div>
 
   <div class="right-col">
     <div class="right-inner">
+      <div class="panel-dots" id="panelDots">
+        <span class="panel-dot is-active" data-index="0"></span>
+        <span class="panel-dot" data-index="1"></span>
+        <span class="panel-dot" data-index="2"></span>
+      </div>
       <div class="panel" id="panel1" style="z-index:1;">
         <svg class="pattern" viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <path d="M -50 850 C 150 750, 100 550, 300 480 C 500 410, 480 200, 700 100" stroke="#F5F2EA" stroke-width="1.4" fill="none"/>
@@ -959,9 +1053,24 @@
 
 <section class="testimonials">
   <div class="testimonials-eyebrow"><span class="dash"></span>Katılımcılar Ne Dedi</div>
-  <div class="testimonial-card">
-    <p class="quote">Yıllardır bildiğim şeyleri sonunda bedenimde hissettim. Toplantıda sessiz kalma alışkanlığım artık otomatik değil — fark edip farklı bir şey deneyebiliyorum.</p>
-    <div class="attribution">Takım Lideri — Program Katılımcısı</div>
+  <div class="testimonials-track" id="testimonialsTrack">
+    <div class="testimonial-card">
+      <div class="testimonial-inner">
+        <p class="quote">Yıllardır bildiğim şeyleri sonunda bedenimde hissettim. Toplantıda sessiz kalma alışkanlığım artık otomatik değil — fark edip farklı bir şey deneyebiliyorum.</p>
+        <div class="attribution">Takım Lideri — Program Katılımcısı</div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-inner">
+        <p class="quote">Merkeze geldiğimde birden "ben burada düşünmüyorum" dedim. Zihnim hep bir adım öndeymiş, fark etmemişim.</p>
+        <div class="attribution">Program Katılımcısı</div>
+        <p class="note">*Merkeze gelmek, önden koşan zihni şimdiki ana geri çağırır.</p>
+      </div>
+    </div>
+  </div>
+  <div class="testimonials-dots" id="testimonialsDots">
+    <button class="testimonials-dot is-active" data-index="0" aria-label="1. yorum"></button>
+    <button class="testimonials-dot" data-index="1" aria-label="2. yorum"></button>
   </div>
 </section>
 
@@ -1023,6 +1132,11 @@
 
     panel3.style.transform = `translate${axis}(${(1 - t2) * 100}%)`;
     panel3.style.pointerEvents = t2 > 0.5 ? 'auto' : 'none';
+
+    const activeIndex = t1 <= 0.5 ? 0 : (t2 <= 0.5 ? 1 : 2);
+    document.querySelectorAll('.panel-dot').forEach((dot, i)=>{
+      dot.classList.toggle('is-active', i === activeIndex);
+    });
   }
 
   window.addEventListener('scroll', onScroll, {passive:true});
@@ -1061,6 +1175,23 @@
     });
   }, {threshold: isMobile() ? 0.15 : 0.65});
   revealSlowEls.forEach(el=>revealSlowObserver.observe(el));
+
+  const testimonialsTrack = document.getElementById('testimonialsTrack');
+  const testimonialsDots = document.querySelectorAll('.testimonials-dot');
+  if(testimonialsTrack && testimonialsDots.length){
+    testimonialsDots.forEach(dot=>{
+      dot.addEventListener('click', ()=>{
+        const i = parseInt(dot.dataset.index, 10);
+        testimonialsTrack.scrollTo({left: i * testimonialsTrack.clientWidth, behavior:'smooth'});
+      });
+    });
+    testimonialsTrack.addEventListener('scroll', ()=>{
+      const i = Math.round(testimonialsTrack.scrollLeft / testimonialsTrack.clientWidth);
+      testimonialsDots.forEach((dot, idx)=>{
+        dot.classList.toggle('is-active', idx === i);
+      });
+    }, {passive:true});
+  }
 </script>
 
 </body>
