@@ -3,7 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Liderler Programı — Embodied Capacity</title>
+<title>Liderlikte Beden Odaklı Çalışma | Embodied Capacity</title>
+<meta name="description" content="Belirsizlikte ve zorlandığınız anlarda alışkanlıklarınızın dışına çıkabilmek için beden odaklı liderlik programı. Kurumunuza özel tasarlanır.">
+<link rel="canonical" href="https://embodiedcapacity.com/program-liderler.html">
+<meta name="theme-color" content="#0E0E0D">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Embodied Capacity">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Liderlikte Beden Odaklı Çalışma | Embodied Capacity">
+<meta property="og:description" content="Belirsizlikte ve zorlandığınız anlarda alışkanlıklarınızın dışına çıkabilmek için beden odaklı liderlik programı. Kurumunuza özel tasarlanır.">
+<meta property="og:url" content="https://embodiedcapacity.com/program-liderler.html">
+<meta property="og:image" content="https://embodiedcapacity.com/og-liderler.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Zor anlarda, olmak istediğiniz lider olabiliyor musunuz?">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -19,6 +36,7 @@
     --cream-soft:rgba(245,242,234,0.68);
   }
   *{box-sizing:border-box;}
+  :where(.rh){margin:0;font-size:inherit;font-weight:inherit;line-height:inherit;}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;}
   a{color:inherit;}
 
@@ -50,13 +68,13 @@
     display:block;
     font-weight:700;
     font-style:normal;
-    font-size:16px;
+    font-size:20px;
   }
   .hero-logo .l2{
     display:block;
     font-weight:400;
     font-style:italic;
-    font-size:16px;
+    font-size:20px;
   }
   .hero-back{
     position:absolute;
@@ -220,39 +238,10 @@
     z-index:1;
   }
   .structure-eyebrow .dash{width:28px;height:1px;background:var(--gold);}
-  .structure-layout{
-    display:grid;
-    grid-template-columns:1.4fr 1fr;
-    gap:56px;
-    align-items:start;
+  .structure-note-flow{
+    max-width:760px;
     position:relative;
     z-index:1;
-  }
-  .structure-card-main{
-    display:flex;
-    flex-direction:column;
-    gap:16px;
-    width:220px;
-    justify-self:end;
-  }
-  .structure-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-  }
-  .structure-row .label{
-    font-size:13px;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    color:var(--gold);
-    font-weight:700;
-    margin:0;
-  }
-  .structure-row .value{
-    font-family:'DM Sans',sans-serif;
-    font-size:13px;
-    font-weight:500;
-    color:#FFFFFF;
   }
   .structure-note-flow p{
     font-size:16px;
@@ -271,7 +260,6 @@
     padding:10vh 7vw 12vh;
   }
   .fit-eyebrow,
-  .fit h2,
   .fit-intro,
   .fit-list{
     max-width:760px;
@@ -293,13 +281,6 @@
     line-height:1.7;
     color:var(--ink);
     margin:0 0 32px;
-  }
-  .fit h2{
-    font-family:'Lora',serif;
-    font-style:italic;
-    font-weight:600;
-    font-size:clamp(24px,2.8vw,32px);
-    margin:0 0 40px;
   }
   .fit-list{
     display:flex;
@@ -375,13 +356,16 @@
     font-size:16px;
     color:rgba(245,242,234,0.55);
   }
-  .final-footer .tags{
+  .final-footer .footer-mail{
     font-size:14px;
     color:rgba(245,242,234,0.4);
+    text-decoration:none;
+    transition:color 0.2s ease;
   }
+  .final-footer .footer-mail:hover,
+  .final-footer .footer-mail:focus-visible{color:#F3D48A;}
 
   @media(max-width:820px){
-    .structure-layout{grid-template-columns:1fr;}
     .gain-item{grid-template-columns:28px 1fr;}
   }
 </style>
@@ -390,7 +374,7 @@
 
 <section class="hero">
   <a class="hero-logo" href="index.html">
-    <span class="l1">EMBODIED</span>
+    <span class="l1">Embodied</span>
     <span class="l2">Capacity</span>
   </a>
 
@@ -404,39 +388,39 @@
 <section class="intro">
   <div class="intro-text">
     <p>Çoğumuz nasıl bir lider olmak istediğimizi biliyoruz. Ama baskı altında, çatışmada ya da belirsizlikte seçimlerimizi çoğu zaman bildiklerimiz değil, alışkanlıklarımız yönlendiriyor.</p>
-    <p>Sizi, bedeninizin liderlik biçiminizi nasıl etkilediğini keşfetmeye, zor anlarda daha fazla davranış seçeneğine erişebilme kapasitenizi geliştirmeye ve bunu günlük liderlik pratiğinize taşımaya davet ediyoruz.</p>
+    <p>Sizi, bedeninizin liderlik biçiminizi nasıl etkilediğini keşfetmeye, zor anlarda alışkanlıklarınızın dışına çıkabilmeye ve bunu günlük liderlik pratiğinize taşımaya davet ediyoruz.</p>
   </div>
 </section>
 
 <section class="gains">
-  <div class="gains-eyebrow"><span class="dash"></span>Program Liderliğinize Ne Katacak?</div>
+  <h2 class="gains-eyebrow rh"><span class="dash"></span>Program Liderliğinize Ne Katacak?</h2>
 
   <div class="gains-list">
     <div class="gain-item" data-reveal>
       <div class="gain-num">01</div>
       <div>
-        <p class="gain-title">Baskı Altında Merkezinizi Koruyabilmek</p>
+        <h3 class="gain-title rh">Baskı Altında Merkezinizi Koruyabilmek</h3>
         <p class="gain-desc">Zor konuşmalarda, kritik karar anlarında veya çatışmalarda yalnızca alışık olduğunuz davranışları değil, duruma uygun farklı seçenekleri kullanmayı öğrenirsiniz. Daha net düşünmeye, bildiklerinizi hayata geçirebilmeye ve daha bilinçli seçimler yapmaya başlarsınız.</p>
       </div>
     </div>
     <div class="gain-item" data-reveal>
       <div class="gain-num">02</div>
       <div>
-        <p class="gain-title">Güven Veren Bir Liderlik Varlığı</p>
+        <h3 class="gain-title rh">Güven Veren Bir Liderlik Varlığı</h3>
         <p class="gain-desc">Liderlik yalnızca söylediklerinizle değil, bulunduğunuz ortamda yarattığınız etkiyle de şekillenir. İnsanlar yanınızda daha rahat düşünür, konuşur ve inisiyatif alır; bu da ekip içinde açıklığı, iş birliğini ve yapıcı geri bildirimi destekleyen bir ortam oluşturur.</p>
       </div>
     </div>
     <div class="gain-item" data-reveal>
       <div class="gain-num">03</div>
       <div>
-        <p class="gain-title">İhtiyaca Göre Liderlik</p>
+        <h3 class="gain-title rh">İhtiyaca Göre Liderlik</h3>
         <p class="gain-desc">Her durum aynı liderliği gerektirmez. Bazen yön vermek, bazen dinlemek, bazen sınır koymak, bazen de geri çekilip alan açmak gerekir. Ancak çoğumuz, en alışık olduğumuz liderlik biçimini tekrar ederiz. Bu çalışmada farklı olasılıkları deneyimler; durumun ihtiyacına göre daha bilinçli ve esnek seçimler yapma kapasitenizi geliştirirsiniz.</p>
       </div>
     </div>
     <div class="gain-item" data-reveal>
       <div class="gain-num">04</div>
       <div>
-        <p class="gain-title">İnsanların Potansiyelini Ortaya Çıkarmak</p>
+        <h3 class="gain-title rh">İnsanların Potansiyelini Ortaya Çıkarmak</h3>
         <p class="gain-desc">Her problemi çözen kişi olmak yerine, insanların düşünmesine, sorumluluk almasına ve kendi çözümlerini geliştirmesine alan açma becerinizi geliştirirsiniz.</p>
       </div>
     </div>
@@ -446,10 +430,10 @@
 </section>
 
 <section class="fit">
-  <div class="fit-eyebrow"><span class="dash"></span>Kimler İçin</div>
+  <h2 class="fit-eyebrow rh"><span class="dash"></span>Kimler İçin</h2>
   <p class="fit-intro">Aynı durumlarda tekrar tekrar benzer tepkiler verdiğinizi fark ediyor ama bunu değiştirmekte zorlanıyorsanız, bu program sizin için olabilir. Örneğin:</p>
   <ul class="fit-list">
-    <li>Nasıl geri bildirim vermeniz gerektiğini biliyorsunuz ama bir türlü karşı tarafa istediğiniz gibi geçiremiyorsanız.</li>
+    <li>Nasıl geri bildirim vermeniz gerektiğini biliyor ama bir türlü karşı tarafa istediğiniz gibi geçiremiyorsanız.</li>
     <li>Zor konuşmalarda, çatışmada ya da baskı altında eski tepki biçimlerinize dönüyorsanız.</li>
     <li>Yeni rolünüz sizden daha stratejik bir yerden bakmanızı isterken kendinizi hâlâ detayların içinde buluyorsanız.</li>
     <li>Kontrolü bırakmakta veya sorumluluk devretmekte zorlanıyorsanız.</li>
@@ -459,38 +443,19 @@
 
 <section class="structure">
   <div class="cta-watermark">EC</div>
-  <div class="structure-eyebrow"><span class="dash"></span>Program Yapısı</div>
+  <h2 class="structure-eyebrow rh"><span class="dash"></span>Program Yapısı</h2>
 
-  <div class="structure-layout">
-    <div class="structure-note-flow">
-      <p>Program; deneyim, kısa teorik çerçeveler, eşli çalışmalar ve grup uygulamalarının ritmik bir akışıyla ilerler.</p>
-      <p>Programın ardından gerçekleştirilecek dört birebir koçluk seansıyla, öğrendiğiniz araçları kendi liderlik bağlamınıza uyarlamanız ve günlük pratiğinize taşımanız desteklenir.</p>
-    </div>
-
-    <div class="structure-card structure-card-main">
-      <div class="structure-row">
-        <div class="label">Süre</div>
-        <div class="value">2 tam gün</div>
-      </div>
-      <div class="structure-row">
-        <div class="label">Format</div>
-        <div class="value">Yüz yüze</div>
-      </div>
-      <div class="structure-row">
-        <div class="label">Kontenjan</div>
-        <div class="value">En fazla 12 katılımcı</div>
-      </div>
-    </div>
+  <div class="structure-note-flow">
+    <p>Program; kısa teorik çerçeveler, eşli çalışmalar ve grup uygulamalarıyla ilerleyen deneyimsel bir çalışmadır. Kurumunuzun ihtiyacına göre online ya da yüz yüze tasarlanır. Öğrendiklerinizi kendi liderlik bağlamınıza uyarlayıp günlük pratiğinize taşımanız için birebir koçluk seanslarıyla desteklenir.</p>
   </div>
 
   <div class="cta-ctas">
-    <a class="cta-outline" href="#">Programı PDF Olarak İndir</a>
-    <a class="cta-solid" href="#">Başvuru Formu →</a>
+    <a class="cta-solid" href="mailto:info@embodiedcapacity.com?subject=Liderler%20Program%C4%B1%20hakk%C4%B1nda">Detaylı Bilgi Al →</a>
   </div>
 
   <div class="final-footer">
     <div class="brand">Embodied Capacity</div>
-    <div class="tags">Liderlik · Koçluk · Davranış Değişimi</div>
+    <a class="footer-mail" href="mailto:info@embodiedcapacity.com">info@embodiedcapacity.com</a>
   </div>
 </section>
 

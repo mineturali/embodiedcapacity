@@ -3,7 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Embodied Capacity</title>
+<title>Embodied Capacity | Beden Odaklı Koçluk ve Liderlik</title>
+<meta name="description" content="Bedeni değişim sürecine dahil edin. Koçluk pratiğinizi derinleştiren ve liderlik kapasitenizi geliştiren beden odaklı programları keşfedin.">
+<link rel="canonical" href="https://embodiedcapacity.com/">
+<meta name="theme-color" content="#0E0E0D">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Embodied Capacity">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Embodied Capacity | Beden Odaklı Koçluk ve Liderlik">
+<meta property="og:description" content="Bedeni değişim sürecine dahil edin. Koçluk pratiğinizi derinleştiren ve liderlik kapasitenizi geliştiren beden odaklı programları keşfedin.">
+<meta property="og:url" content="https://embodiedcapacity.com/">
+<meta property="og:image" content="https://embodiedcapacity.com/og-ana-sayfa.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Biliyoruz. Anlıyoruz. Ama ihtiyaç anında yine eskisi gibi davranıyoruz.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -19,6 +36,7 @@
     --cream-soft:rgba(245,242,234,0.68);
   }
   *{box-sizing:border-box;}
+  :where(.rh){margin:0;font-size:inherit;font-weight:inherit;line-height:inherit;}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;}
 
   /* ---------- HERO ---------- */
@@ -85,6 +103,9 @@
     justify-content:center;
     animation:bounce 2s ease-in-out infinite;
   }
+  .scroll-indicator{text-decoration:none;cursor:pointer;}
+  .scroll-indicator:focus-visible{outline:2px solid var(--gold);outline-offset:6px;border-radius:4px;}
+  @media (prefers-reduced-motion: no-preference){ html{scroll-behavior:smooth;} }
   .scroll-indicator svg{width:14px;height:14px;}
   .scroll-indicator span{
     font-size:11px;
@@ -257,7 +278,7 @@
     color:#FFFFFF;
     margin-bottom:20px;
   }
-  .panel h2{
+  .panel h3{
     font-family:'Lora',serif;
     font-weight:500;
     font-size:clamp(24px,2.8vw,32px);
@@ -265,6 +286,7 @@
     letter-spacing:-0.005em;
     margin:0 0 28px;
     color:var(--gold);
+    text-wrap:balance;
   }
   .panel p{
     font-size:18px;
@@ -352,7 +374,8 @@
   .approach-quote-block{
     border-left:3px solid var(--gold);
     padding-left:44px;
-    max-width:900px;
+    box-sizing:border-box;
+    max-width:calc(100% * 2 / 3); /* sağ kenar, alttaki Regülasyon | Kapasite çizgisiyle hizalı */
     opacity:0;
     transform:translateY(36px);
     transition:opacity 0.9s ease, transform 0.9s ease;
@@ -534,10 +557,14 @@
     font-size:16px;
     color:rgba(245,242,234,0.55);
   }
-  .final-footer .tags{
+  .final-footer .footer-mail{
     font-size:14px;
     color:rgba(245,242,234,0.4);
+    text-decoration:none;
+    transition:color 0.2s ease;
   }
+  .final-footer .footer-mail:hover,
+  .final-footer .footer-mail:focus-visible{color:#F3D48A;}
 
   /* ---------- BİZ KİMİZ ---------- */
   .who{
@@ -602,7 +629,8 @@
   }
   .who-eyebrow .dash{width:28px;height:2px;background:var(--gold);}
   .who-left p,
-  .who-right p{
+  .who-right p,
+  .who-right .who-profile-name{
     font-size:17px;
     font-weight:300;
     line-height:1.8;
@@ -822,11 +850,11 @@
     .right-inner{position:sticky;top:0;height:100vh;overflow:hidden;}
     .panel{position:absolute;inset:0;align-items:flex-start;padding:12vh 6vw;overflow-y:auto;}
     .panel .p-label{font-size:clamp(24px,7vw,32px);margin-bottom:12px;}
-    .panel h2{font-size:clamp(19px,5.5vw,24px);line-height:1.3;margin:0 0 16px;}
+    .panel h3{font-size:clamp(19px,5.5vw,24px);line-height:1.3;margin:0 0 16px;}
     .panel p{font-size:15.5px;line-height:1.65;margin:0 0 12px;}
     .panel .cta{margin-top:14px;padding:12px 26px;font-size:13px;}
     .approach-grid{grid-template-columns:1fr;gap:6vh;}
-    .approach-quote-block{padding-left:24px;}
+    .approach-quote-block{padding-left:24px;max-width:none;}
     .final-grid{grid-template-columns:1fr;gap:8vh;}
     .who-grid{grid-template-columns:1fr;gap:6vh;}
     .who-right{transform:translateY(24px);transition:opacity 0.5s ease, transform 0.5s ease;}
@@ -866,18 +894,18 @@
     </div>
   </div>
 
-  <div class="scroll-indicator">
+  <a class="scroll-indicator" href="#introStatement" aria-label="Aşağı kaydır">
     <div class="circle">
       <svg viewBox="0 0 24 24" fill="none" stroke="#F5F2EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
     <span>kaydır</span>
-  </div>
+  </a>
 </section>
 
 <div class="hero-spacer"></div>
 
-<section class="intro-statement">
-  <p>Embodied Capacity, bildiklerimizin davranışa dönüşmesini destekleyen bir kapasite geliştirme programıdır.</p>
+<section class="intro-statement" id="introStatement">
+  <p>Embodied Capacity, bedeni değişim sürecine dahil eden bir kapasite geliştirme programıdır.</p>
 </section>
 
 <section class="approach">
@@ -892,7 +920,6 @@
   </div>
 
   <div class="approach-quote-block" data-reveal>
-    <p class="quote">Bildiğimiz halde yapmakta zorlandıklarımızı değiştirebilmek için farklı bir bakış getiriyor, bedeni değişime dahil ediyoruz.</p>
     <p class="quote-sub">Otomatik davranış kalıplarının bedenimizde nasıl yerleştiğini fark ediyor, ihtiyaç anında farklı seçeneklere erişebilmenizi mümkün kılan bedensel kapasiteyi geliştiriyoruz.</p>
   </div>
 </section>
@@ -921,8 +948,8 @@
 <div class="split" id="pinWrap">
   <div class="left-col">
     <div class="dash"></div>
-    <div class="label">Kimlerle Çalışıyoruz</div>
-    <p class="subline">Koçlar ve liderler için, kendi pratiklerine yönelik iki farklı program sunuyoruz.</p>
+    <h2 class="label rh">Kimlerle Çalışıyoruz</h2>
+    <p class="subline">Koçlar ve liderler için, kendi pratiklerine yönelik iki farklı program ve birebir koçluk sunuyoruz.</p>
   </div>
 
   <div class="right-col">
@@ -944,10 +971,10 @@
         </svg>
         <div class="panel-content">
         <div class="p-label">Koçlar</div>
-        <h2>Farkındalık tek başına değişim yaratmaz.</h2>
-        <p>Danışanlarınızın farkındalığını kalıcı davranışlara dönüştürecek araçlar edinin. Koçluk güçlü sorular, farkındalık ve yeni bakış açıları yaratır. Peki ya danışan fark ettiğinde ama yine de değişmediğinde?</p>
+        <h3>Koçluk pratiğinize bedeni dahil edin.</h3>
+        <p>Koçluk güçlü sorularla farkındalık ve yeni bakış açıları yaratır. Peki ya danışan fark ettiğinde ama yine de değişmediğinde?</p>
         <p>Danışan yalnızca hikâyesini getirmez. Alışkanlıklarını, otomatik tepkilerini, bedenini ve mevcut kapasitesini de getirir.</p>
-        <p>Bedenle çalışmayı öğrendiğinizde yalnızca yeni bir teknik eklemezsiniz. Danışanınızın değişim sürecini tamamen farklı bir yerden görmeye başlarsınız. Kendi merkezinizde kalabilme kapasiteniz, danışanınızın da regüle olmasını destekler.</p>
+        <p>Embodied Capacity, koçun kendi duruşunu ve kapasitesini geliştirirken, danışanın da farkındalıktan yeni davranışlara geçişini destekler. Bedeni hem koçun kendi deneyimine hem de koçluk sürecine dahil eder.</p>
         <a class="cta" href="program-koclar.html">Programı İncele</a>
         </div>
       </div>
@@ -964,10 +991,10 @@
         </svg>
         <div class="panel-content">
         <div class="p-label">Liderler</div>
-        <h2>Bilmek, baskı altında yapabilmek değildir.</h2>
-        <p>Zorlandığımız anlarda sistem yeni öğrendiklerimize değil; en tanıdık olana yönelir. Bu yüzden liderlik yalnızca ne bildiğinizle değil; baskı altında hangi davranışlara erişebildiğinizle ilgilidir.</p>
-        <p>Lider olarak duruşunuz, sakinliğiniz ve belirsizlik karşısında verdiğiniz tepki, ekibinizi sözlerinizden daha fazla etkiler.</p>
-        <p>Embodied Capacity, baskı altında daha fazla davranış seçeneğine erişebileceğiniz bedensel kapasiteyi geliştirmeyi amaçlar.</p>
+        <h3>Liderlik kapasitenizi güçlendirin.</h3>
+        <p>Liderlik yalnızca ne bildiğinizle değil, zor anlarda hangi davranışlara erişebildiğinizle ilgilidir. Zorlandığımızda yeni öğrendiklerimiz yerine en tanıdık olana yöneliriz.</p>
+        <p>Bir lider olarak duruşunuz ve belirsizlik karşısında verdiğiniz tepki, ekibinizi çoğu zaman sözlerinizden daha fazla etkiler.</p>
+        <p>Embodied Capacity, baskı altında daha fazla davranış seçeneğine erişebilme kapasitenizi geliştirmeyi amaçlar.</p>
         <a class="cta" href="program-liderler.html">Programı İncele</a>
         </div>
       </div>
@@ -983,11 +1010,11 @@
           <circle cx="380" cy="420" r="2" fill="#F5F2EA"/>
         </svg>
         <div class="panel-content">
-        <div class="p-label">Birebir Çalışmalar</div>
-        <h2>Bazen ihtiyaç bir program değil, birebir çalışmadır.</h2>
+        <div class="p-label">Birebir Koçluk</div>
+        <h3>Bazen ihtiyaç bir program değil, birebir koçluktur.</h3>
         <p>Koç veya lider olarak, kendi gündeminizle birebir çalışabilirsiniz. İster liderlikte zorlandığınız bir eşik, ister koçluk pratiğinizde tekrar eden bir tema olsun; bu noktaya birlikte bakarız.</p>
         <p>Sistem bakışı, Gestalt ve bedensel öğrenme yaklaşımımızla, ihtiyaç duyduğunuz anda erişebileceğiniz kapasiteyi geliştiririz.</p>
-        <a class="cta" href="#">Detaylı Bilgi Al</a>
+        <a class="cta" href="mailto:info@embodiedcapacity.com?subject=Birebir%20Ko%C3%A7luk%20hakk%C4%B1nda">Detaylı Bilgi Al</a>
         </div>
       </div>
     </div>
@@ -995,7 +1022,7 @@
 </div>
 
 <section class="case">
-  <div class="case-eyebrow"><span class="dash"></span>Gerçek Hayattan</div>
+  <h2 class="case-eyebrow rh"><span class="dash"></span>Gerçek Hayattan</h2>
 
   <div class="case-quote-top">
     <p class="quote-text">"Kuş olmak istiyorum ama çoğu zaman tavşan gibi yaşıyorum; o tavşan deliğinden çıkamıyorum."</p>
@@ -1019,7 +1046,7 @@
   <div class="who-bg"></div>
 
   <div class="who-inner">
-    <div class="who-eyebrow"><span class="dash"></span>Biz Kimiz</div>
+    <h2 class="who-eyebrow rh"><span class="dash"></span>Biz Kimiz</h2>
     <div class="who-grid">
       <div class="who-left">
         <p>Embodied Capacity, Mine Turalı ve Duygu Arlı Gürler'in farklı disiplinlerden getirdikleri deneyim ve yaklaşımların bir araya gelmesiyle oluştu.</p>
@@ -1033,27 +1060,27 @@
 
       <div class="who-right" data-reveal-slow>
         <div class="who-profile-head">
-          <p class="who-profile-name">Mine Turalı</p>
+          <h3 class="who-profile-name rh">Mine Turalı</h3>
           <a class="who-linkedin" href="https://www.linkedin.com/in/mine-turalı/" target="_blank" rel="noopener" aria-label="Mine Turalı LinkedIn">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
           </a>
         </div>
-        <p>Koçluk (Co-Active Coaching), takım ve sistem koçluğu (ORSC), Gestalt uygulayıcılığı, Leadership Embodiment, Embodied Facilitator Course ve uzun yıllara dayanan yoga pratiğinden besleniyor. Davranış değişimine, deneyim ve bedenin öğrenmedeki rolünü merkeze alan bir yaklaşımla çalışıyor.</p>
+        <p>Koçluk (Co-Active Coaching), takım ve sistem koçluğu (ORSC), Gestalt uygulayıcılığı, Leadership Embodiment, Embodied Facilitator Course ve uzun yıllara dayanan yoga pratiğinden besleniyor. Koçluğa ve gelişime, deneyimin ve bedenin öğrenmedeki rolünü merkeze alarak bakıyor.</p>
 
         <div class="who-profile-head">
-          <p class="who-profile-name">Duygu Arlı Gürler, PCC</p>
+          <h3 class="who-profile-name rh">Duygu Arlı Gürler, PCC</h3>
           <a class="who-linkedin" href="https://www.linkedin.com/in/duygu-arli-gurler-pcc-05065126/" target="_blank" rel="noopener" aria-label="Duygu Arlı Gürler LinkedIn">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
           </a>
         </div>
-        <p>Embodied Transformation (Strozzi Institute for Somatics), The Gestalt Coaching Program ve Gestalt Groupworks (Gestalt Center for Coaching) sertifikalarına sahiptir. Global liderlik ve insan gelişimi deneyimini, yönetici koçluğu pratiğiyle bir araya getiriyor. Liderlik gelişimi alanındaki kurumsal deneyimini, somatik yaklaşımlarla bütünleştirerek davranış değişimi üzerine çalışıyor.</p>
+        <p>Embodied Transformation (Strozzi Institute for Somatics), The Gestalt Coaching Program ve Gestalt Groupworks sertifikalarına sahiptir. Global liderlik ve insan gelişimi deneyimini, yönetici koçluğu pratiğiyle bir araya getiriyor. Liderlik gelişimi alanındaki kurumsal deneyimini, somatik yaklaşımlarla bütünleştirerek davranış değişimi üzerine çalışıyor.</p>
       </div>
     </div>
   </div>
 </section>
 
 <section class="testimonials">
-  <div class="testimonials-eyebrow"><span class="dash"></span>Katılımcılar Ne Dedi</div>
+  <h2 class="testimonials-eyebrow rh"><span class="dash"></span>Katılımcılar Ne Dedi</h2>
   <div class="testimonials-track" id="testimonialsTrack">
     <div class="testimonial-card">
       <div class="testimonial-inner">
@@ -1086,7 +1113,7 @@
         </h2>
         <p class="sub">Değişim, onları davranışa dönüştürebildiğimizde gerçekleşir.</p>
         <div class="final-ctas">
-          <a class="final-cta-outline" href="#">Bize Ulaşın</a>
+          <a class="final-cta-outline" href="mailto:info@embodiedcapacity.com">Bize Ulaşın</a>
         </div>
       </div>
     </div>
@@ -1094,7 +1121,7 @@
 
   <div class="final-footer">
     <div class="brand">Embodied Capacity</div>
-    <div class="tags">Liderlik · Koçluk · Davranış Değişimi</div>
+    <a class="footer-mail" href="mailto:info@embodiedcapacity.com">info@embodiedcapacity.com</a>
   </div>
 </section>
 
@@ -1205,6 +1232,39 @@
         dot.classList.toggle('is-active', idx === i);
       });
     }, {passive:true});
+
+    // Otomatik geçiş: 4 sn'de bir; ekranda değilken durur,
+    // kullanıcı kendisi kaydırır ya da noktaya tıklarsa tamamen kapanır.
+    const tCount = testimonialsDots.length;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let autoTimer = null, autoStopped = reduceMotion || tCount < 2;
+    let inView = false, seen = false, programmatic = false, progTimeout = null;
+    const tCurrent = () => Math.round(testimonialsTrack.scrollLeft / testimonialsTrack.clientWidth);
+    const tGoTo = i => {
+      programmatic = true;
+      clearTimeout(progTimeout);
+      progTimeout = setTimeout(()=>{ programmatic = false; }, 1000);
+      testimonialsTrack.scrollTo({left: i * testimonialsTrack.clientWidth, behavior:'smooth'});
+    };
+    const pauseAuto = () => { clearInterval(autoTimer); autoTimer = null; };
+    const stopAuto = () => { autoStopped = true; pauseAuto(); };
+    const startAuto = () => {
+      if(autoStopped || autoTimer || !inView) return;
+      autoTimer = setInterval(()=> tGoTo((tCurrent() + 1) % tCount), 4000);
+    };
+    testimonialsTrack.addEventListener('scroll', ()=>{ if(!programmatic) stopAuto(); }, {passive:true});
+    testimonialsDots.forEach(dot=> dot.addEventListener('click', stopAuto));
+    new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        inView = e.isIntersecting;
+        if(inView){
+          if(!seen && !autoStopped){ seen = true; tGoTo(0); }
+          startAuto();
+        } else {
+          pauseAuto();
+        }
+      });
+    }, {threshold:0.5}).observe(testimonialsTrack);
   }
 </script>
 
